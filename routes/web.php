@@ -31,3 +31,4 @@ Route::get('/home', function() {
 
 // route master data siswa
 Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index']);
+Route::get('/siswa/add', [App\Http\Controllers\SiswaController::class, 'create']);

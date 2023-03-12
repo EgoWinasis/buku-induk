@@ -292,7 +292,7 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'text' => 'Dashboard',
+            'text' => ' Dashboard',
             'url'  => '/home',
             'icon' => 'fas fa-home',
         ],
@@ -312,21 +312,30 @@ return [
         // master data
         ['header' => 'DATA'],
         [
-            'text' => 'Master Data',
+            'text' => ' Master Data',
             'icon' => 'fas fa-database',
             'submenu' => [
                 [
-                    'text' => 'Siswa',
+                    'text' => ' Siswa',
                     'url'  => '/siswa',
                 ],
                 [
-                    'text' => 'Guru',
+                    'text' => ' Guru',
                     'url'  => '/guru',
                 ],
             ]
         ],
-
         // end master data
+
+        // about
+        ['header' => 'APP'],
+        [
+            'text' => ' About',
+            'url'  => '/about',
+            'icon' => 'fas fa-address-card'
+        ],
+        // about
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -415,21 +424,21 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
@@ -504,6 +513,16 @@ return [
                 ],
             ],
         ],
+        'BsCustomFileInput' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bs-custom-file-input/bs-custom-file-input.min.js',
+                ],
+            ],
+        ],
         'Sweetalert2' => [
             'active' => false,
             'files' => [
@@ -526,6 +545,26 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'TempusDominusBs4' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
                 ],
             ],
         ],
