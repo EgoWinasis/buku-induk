@@ -3,59 +3,76 @@
 @section('css')
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 @stop
-@section('title', 'Siswa')
+@section('title', 'Data Siswa')
 
 @section('content_header')
-<h1 class="m-0 text-dark">Siswa</h1>
+<h1 class="m-0 text-dark">Data Siswa</h1>
 @stop
 
 @section('content')
 
 <section class="content">
     <div class="container-fluid">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
         <div class="row my-3">
-            <x-adminlte-button onclick="return add();"  label="Tambah" theme="primary" icon="fas fa-plus"/>
+            <x-adminlte-button onclick="return add();" label="Tambah" theme="primary" icon="fas fa-plus" />
         </div>
         <div class="row">
-            {{-- Setup data for datatables --}}
-            @php
-            $heads = [
-            'ID',
-            'NISN',
-            'No. Induk',
-            'Nama',
-            ['label' => 'Alamat', 'width' => 40],
-            ['label' => 'Aksi', 'no-export' => true, 'width' => 5],
-            ];
+       
+            <div class="col-md-12">
 
-            $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                <i class="fa fa-lg fa-fw fa-pen"></i>
-            </button>';
-            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                <i class="fa fa-lg fa-fw fa-trash"></i>
-            </button>';
-            $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
-                <i class="fa fa-lg fa-fw fa-eye"></i>
-            </button>';
+                <table id="table_siswa" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NIS</th>
+                            <th>Nama Lengkap</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Foto</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($students as $student)
+                        <tr>
+                            <td>{{ ++$i }}</td>
+                            <td>{{ $student->nis }}</td>
+                            <td>{{ $student->nama_lengkap }}</td>
+                            <td>{{ $student->jen_kel == "Laki-laki" ? "Laki-laki" : "Perempuan" }}</td>
+                            <td class="text-center"><img src="{{$student->foto_siswa == "user_default_profil.png" ? asset('storage/images/user_default_profil.png') : asset('storage/images/foto-siswa/'.$student->foto_siswa);}}"
+                                    width="50px" alt="Foto Siswa"></td>
+                            <td>
+                                <form action="{{ route('siswa.destroy',$student->id) }}" method="POST">
 
-            $config = [
-            'data' => [
-            [22,"12312312","2123", 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>
-            '],
-            [19,"123213321","2132", 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'
-            </nobr>'],
-            [3,"213213","2312", 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            ],
-            'order' => [[1, 'asc']],
-            'columns' => [null, null,null,null, null, ['orderable' => false]],
-            ];
-            @endphp
+                                    <a class="btn btn-info" href="{{ route('siswa.show',$student->id) }}">Show</a>
 
-            {{-- With buttons --}}
-            <x-adminlte-datatable id="table7" :heads="$heads" theme="light" :config="$config" striped hoverable
-                with-buttons />
+                                    <a class="btn btn-primary" href="{{ route('siswa.edit',$student->id) }}">Edit</a>
+
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
 
 
+                <div class="row text-center">
+                    {!! $students->links() !!}
+                </div>
+
+
+
+
+            </div>
         </div>
 
     </div><!-- /.container-fluid -->
@@ -70,7 +87,45 @@
 @section('js')
 <script type="text/javascript">
     function add() {
-        window.location = "{{url('/siswa/add')}}";
+        window.location = "{{ route('siswa.create') }}";
     }
+    
+  $(function () {
+    $("#table_siswa").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    //   "buttons": ["excel", "pdf", "print"],
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "buttons": [
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3 ]
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3 ]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3 ]
+                }
+            }
+        ]
+    }).buttons().container().appendTo('#table_siswa_wrapper .col-md-6:eq(0)');
+   
+  });
+
+  
+
 </script>
 @stop

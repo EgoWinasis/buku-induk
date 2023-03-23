@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\Siswa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +30,4 @@ Route::get('/home', function() {
 
 
 // route master data siswa
-Route::get('/siswa', [App\Http\Controllers\SiswaController::class, 'index']);
-Route::get('/siswa/add', [App\Http\Controllers\SiswaController::class, 'create']);
+Route::resource('siswa', \App\Http\Controllers\Siswa::class)->middleware('auth');

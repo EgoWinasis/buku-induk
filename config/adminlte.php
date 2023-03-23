@@ -316,11 +316,11 @@ return [
             'icon' => 'fas fa-database',
             'submenu' => [
                 [
-                    'text' => ' Siswa',
+                    'text' => 'Siswa',
                     'url'  => '/siswa',
                 ],
                 [
-                    'text' => ' Guru',
+                    'text' => 'Guru',
                     'url'  => '/guru',
                 ],
             ]
