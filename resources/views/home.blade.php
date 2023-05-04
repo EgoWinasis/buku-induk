@@ -1,8 +1,6 @@
 @extends('adminlte::page')
 
-@section('css')
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-@stop
+
 @section('title', 'Dashboard')
 
 @section('content_header')
@@ -17,64 +15,66 @@
           <div class="row">
             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-info">
+              <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>150</h3>
+                <h3>{{$siswa}}</h3>
   
                   <p>Siswa</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-university"></i>
+                  <i class="fas fa-users text-white"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('siswa.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+           
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                <h3>{{$nilai}}</h3>
+  
+                  <p>Nilai</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-book text-white"></i>
+                </div>
+                <a href="{{route('nilai.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-success">
+              <div class="small-box bg-dark">
                 <div class="inner">
-                  <h3>8</h3>
+                <h3>{{$file}}</h3>
   
-                  <p>Guru</p>
+                  <p>Kompetensi</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person"></i>
+                  <i class="fas fa-trophy text-white"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('nilai.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
-              <div class="small-box bg-warning">
+              <div class="small-box bg-secondary">
                 <div class="inner">
-                  <h3>44</h3>
+                <h3>{{$file}}</h3>
   
-                  <p>User Registrations</p>
+                  <p>Ijazah</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="fas fa-graduation-cap text-white"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('ijazah.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>65</h3>
-  
-                  <p>Unique Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
+           
           </div>
           <!-- /.row -->
          

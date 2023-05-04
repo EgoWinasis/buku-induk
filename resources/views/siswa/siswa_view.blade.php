@@ -6,7 +6,12 @@
 @section('title', 'Data Siswa')
 
 @section('content_header')
-<h1 class="m-0 text-dark">Data Siswa</h1>
+<div class="row">
+    <div class="col-md-12">
+
+        <h1 class="m-0 text-dark">Data Siswa</h1>
+    </div>
+</div>
 @stop
 
 @section('content')
@@ -19,10 +24,14 @@
         </div>
         @endif
         <div class="row my-3">
-            <x-adminlte-button onclick="return add();" label="Tambah" theme="primary" icon="fas fa-plus" />
+            <div class="col-md-12">
+
+                <x-adminlte-button onclick="return add();" label="Tambah" theme="primary" icon="fas fa-plus" />
+            </div>
+
         </div>
         <div class="row">
-       
+
             <div class="col-md-12">
 
                 <table id="table_siswa" class="table table-bordered table-striped">
@@ -37,39 +46,36 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $i=1;
+                        @endphp
                         @foreach ($students as $student)
                         <tr>
-                            <td>{{ ++$i }}</td>
+                            <td>{{ $i++ }}</td>
                             <td>{{ $student->nis }}</td>
-                            <td>{{ $student->nama_lengkap }}</td>
+                            <td class="nama">{{ $student->nama_lengkap }}</td>
                             <td>{{ $student->jen_kel == "Laki-laki" ? "Laki-laki" : "Perempuan" }}</td>
-                            <td class="text-center"><img src="{{$student->foto_siswa == "user_default_profil.png" ? asset('storage/images/user_default_profil.png') : asset('storage/images/foto-siswa/'.$student->foto_siswa);}}"
+                            <td class="text-center"><img
+                                    src="{{$student->foto_siswa == "user_default_profil.png" ? asset('storage/images/user_default_profil.png') : asset('storage/images/foto-siswa/'.$student->foto_siswa);}}"
                                     width="50px" alt="Foto Siswa"></td>
                             <td>
-                                <form action="{{ route('siswa.destroy',$student->id) }}" method="POST">
+                                {{-- <form action="{{ route('siswa.destroy',$student->id) }}" method="POST"> --}}
 
-                                    <a class="btn btn-info" href="{{ route('siswa.show',$student->id) }}">Show</a>
+                                <a class="btn btn-info" href="{{ route('siswa.show',$student->id) }}">Show</a>
 
-                                    <a class="btn btn-primary" href="{{ route('siswa.edit',$student->id) }}">Edit</a>
+                                <a class="btn btn-primary" href="{{ route('siswa.edit',$student->id) }}">Edit</a>
 
-                                    @csrf
+                                {{-- @csrf
                                     @method('DELETE')
-
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                                    <button type="submit"  class="btn btn-danger">Delete</button> --}}
+                                <a class="btn btn-danger btn-delete" data-id="{{$student->id}}">Delete</a>
+                                {{-- </form> --}}
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
 
                 </table>
-
-
-                <div class="row text-center">
-                    {!! $students->links() !!}
-                </div>
-
-
 
 
             </div>
@@ -83,6 +89,9 @@
 <div id="mycredit"><strong> Copyright &copy; <?php echo date('Y');?> Sistem Informasi Buku Induk Siswa - Kampus Mengajar
         Angkatan 5 </div>
 @stop
+{{-- @push('js')
+<script src="asset('vendor/sweetalert2/sweetalert2.min.js')"></script>
+@endpush --}}
 
 @section('js')
 <script type="text/javascript">
@@ -125,7 +134,50 @@
    
   });
 
-  
+  $(document).on('click', '.btn-delete', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var nama = $(this).parent().parent().find('.nama').text();
+    var token = $("meta[name='csrf-token']").attr("content");
+
+    Swal.fire({
+        title: 'Hapus data siswa '+nama+' ?',
+        text: "Semua data siswa akan hilang!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+    if (result.isConfirmed) {
+        $.ajax({
+             type: "DELETE",
+             url: "/siswa/"+id,
+             data: {
+                 'id'     :id,
+                 '_token' : token,
+                 },
+            success: function (data) {   
+                Swal.fire(
+                    'Deleted!',
+                    'Data siswa '+nama+' berhasil dihapus!',
+                    'success'
+                    )
+                    window.location.reload();
+                 },
+            error: function(xhr, status, error) {
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error
+                    })
+                 }      
+            });
+        
+    }
+    })
+    
+});
 
 </script>
 @stop

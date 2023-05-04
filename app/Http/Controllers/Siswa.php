@@ -2,8 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ekstrakulikuler;
+use App\Models\Ketidakhadiran;
+use App\Models\ModelBeasiswa;
+use App\Models\ModelIjazah;
+use App\Models\ModelKelas;
+use App\Models\ModelKenaikan;
+use App\Models\ModelKesehatan;
+use App\Models\ModelKompetensi;
+use App\Models\ModelLainLain;
+use App\Models\ModelMeninggalkanSekolah;
 use App\Models\Students;
+use App\Models\ModelOrangTua;
+use App\Models\ModelProgressSiswa;
+use App\Models\ModelTandaTangan;
+use App\Models\PelajarPancasila;
+use App\Models\Pengetahuan;
+use App\Models\Prestasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class Siswa extends Controller
@@ -20,11 +37,13 @@ class Siswa extends Controller
 
     public function index()
     {
-        $students = Students::latest()->paginate(5);
+        $students = DB::table('students')
+        ->select('id', 'nis', 'nama_lengkap', 'jen_kel', 'foto_siswa')
+        ->orderBy('nis')
+        ->get();
 
-        return view('siswa.siswa_view', compact('students'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-        // return view('siswa.siswa_view');
+        return view('siswa.siswa_view')
+            ->with(compact('students'));
     }
 
     /**
@@ -48,7 +67,7 @@ class Siswa extends Controller
 
         $validatedData = $request->validate([
             'nis' => ['required', 'min:4', 'max:4', 'unique:students,nis'],
-            'nisn' => ['string', 'max:10', 'nullable'],
+            'nisn' => ['required', 'min:10', 'max:10', 'unique:students,nisn'],
             'nik' => ['string', 'max:16', 'nullable'],
             'no_kk' => ['string', 'max:16', 'nullable'],
             'nama_lengkap' => ['required', 'string', 'max:255'],
@@ -65,6 +84,7 @@ class Siswa extends Controller
             'telepon' => ['string', 'nullable', 'max:13'],
             'tempat_tinggal' => ['string', 'nullable', 'max:100'],
             'jarak' => ['string', 'nullable', 'max:5'],
+            // orang tua
             'nama_ayah' => ['string', 'nullable', 'max:255'],
             'nama_ibu' => ['string', 'nullable', 'max:255'],
             'pendidikan_ayah' => ['string'],
@@ -75,6 +95,7 @@ class Siswa extends Controller
             'hubungan_wali' => ['string', 'nullable', 'max:100'],
             'pendidikan_wali' => ['string'],
             'pekerjaan_wali' => ['string', 'nullable', 'max:255'],
+            // perkembangan siswa
             'asal_sekolah' => ['string', 'nullable', 'max:100'],
             'nama_tk' => ['string', 'nullable', 'max:100'],
             'tgl_sttb' => ['string', 'nullable', 'max:50'],
@@ -82,22 +103,223 @@ class Siswa extends Controller
             'asal_sekolah_pindah' => ['string', 'nullable', 'max:100'],
             'tingkat_sekolah_pindah' => ['string', 'nullable', 'max:2'],
             'tgl_diterima' => ['string', 'nullable', 'max:20'],
+
+            // kesehatan jasmani
+            // tahun
+            'jas_th_1' => ['string', 'nullable', 'max:20'],
+            'jas_th_2' => ['string', 'nullable', 'max:20'],
+            'jas_th_3' => ['string', 'nullable', 'max:20'],
+            'jas_th_4' => ['string', 'nullable', 'max:20'],
+            'jas_th_5' => ['string', 'nullable', 'max:20'],
+            'jas_th_6' => ['string', 'nullable', 'max:20'],
+            // berat
+            'jas_bb_1' => ['string', 'nullable', 'max:20'],
+            'jas_bb_2' => ['string', 'nullable', 'max:20'],
+            'jas_bb_3' => ['string', 'nullable', 'max:20'],
+            'jas_bb_4' => ['string', 'nullable', 'max:20'],
+            'jas_bb_5' => ['string', 'nullable', 'max:20'],
+            'jas_bb_6' => ['string', 'nullable', 'max:20'],
+            // tinggi
+            'jas_tb_1' => ['string', 'nullable', 'max:20'],
+            'jas_tb_2' => ['string', 'nullable', 'max:20'],
+            'jas_tb_3' => ['string', 'nullable', 'max:20'],
+            'jas_tb_4' => ['string', 'nullable', 'max:20'],
+            'jas_tb_5' => ['string', 'nullable', 'max:20'],
+            'jas_tb_6' => ['string', 'nullable', 'max:20'],
+
+            // penyakit
+            'jas_pt_1' => ['string', 'nullable', 'max:255'],
+            'jas_pt_2' => ['string', 'nullable', 'max:255'],
+            'jas_pt_3' => ['string', 'nullable', 'max:255'],
+            'jas_pt_4' => ['string', 'nullable', 'max:255'],
+            'jas_pt_5' => ['string', 'nullable', 'max:255'],
+            'jas_pt_6' => ['string', 'nullable', 'max:255'],
+
+            // keahlian
+            'jas_kj_1' => ['string', 'nullable', 'max:255'],
+            'jas_kj_2' => ['string', 'nullable', 'max:255'],
+            'jas_kj_3' => ['string', 'nullable', 'max:255'],
+            'jas_kj_4' => ['string', 'nullable', 'max:255'],
+            'jas_kj_5' => ['string', 'nullable', 'max:255'],
+            'jas_kj_6' => ['string', 'nullable', 'max:255'],
+
+            // beasiswa
+            'beasiswa' => ['string', 'nullable', 'max:255'],
+            // meninggalkan sekolah
+            //tamat
+            'thn_tamat' => ['string', 'nullable', 'max:50'],
+            'no_ijazah' => ['string', 'nullable', 'max:255'],
+            'lanjut_sekolah_tamat' => ['string', 'nullable', 'max:255'],
+            //pindah 
+            'dari_tingkat' => ['string', 'nullable', 'max:5'],
+            'ke_tingkat' => ['string', 'nullable', 'max:5'],
+            'lanjut_sekolah_pindah' => ['string', 'nullable', 'max:255'],
+
+            // keluar
+            'tgl_keluar_sekolah' => ['string', 'nullable', 'max:50'],
+            'alasan_keluar_sekolah' => ['string', 'nullable', 'max:255'],
+            // lain-lain
+            'lain_lain' => ['string', 'nullable', 'max:255'],
+            // foto
             'foto_siswa' => 'image|file|max:2048|mimes:png,jpg,jpeg|dimensions:max_width=200,max_height=300',
 
         ]);
 
-        // ddd($request);
+        // dd($validatedData);
         if ($request->file('foto_siswa')) {
             $file = $request->file('foto_siswa');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('foto_siswa')->storeAs('public/images/foto-siswa', $fileName);
             $validatedData['foto_siswa'] = $fileName;
+        } else {
+            $validatedData['foto_siswa'] = "user_default_profil.png";
         }
 
+        $siswa = [
+            'nis' => $validatedData['nis'],
+            'nisn' => $validatedData['nisn'],
+            'nik' => $validatedData['nik'],
+            'no_kk' => $validatedData['no_kk'],
+            'nama_lengkap' => $validatedData['nama_lengkap'],
+            'nama_panggilan' => $validatedData['nama_panggilan'],
+            'jen_kel' => $validatedData['jen_kel'],
+            'tempat_lahir' => $validatedData['tempat_lahir'],
+            'tgl_lahir' => $validatedData['tgl_lahir'],
+            'agama' => $validatedData['agama'],
+            'kewarganegaraan' => $validatedData['kewarganegaraan'],
+            'jml_saudara' => $validatedData['jml_saudara'],
+            'bahasa' => $validatedData['bahasa'],
+            'gol_darah' => $validatedData['gol_darah'],
+            'alamat' => $validatedData['alamat'],
+            'telepon' => $validatedData['telepon'],
+            'tempat_tinggal' => $validatedData['tempat_tinggal'],
+            'jarak' => $validatedData['jarak'],
+            'foto_siswa' => $validatedData['foto_siswa']
+        ];
 
-        // dd($validatedData);
-        Students::create($validatedData);
+        Students::create($siswa);
+        $siswaBaru = Students::where('nis', $validatedData['nis'])->first();
 
+        // orang tua
+        $orangTua = [
+            'siswa_id' => $siswaBaru['id'],
+            'nama_ayah' => $validatedData['nama_ayah'],
+            'nama_ibu' => $validatedData['nama_ibu'],
+            'pendidikan_ayah' => $validatedData['pendidikan_ayah'],
+            'pendidikan_ibu' => $validatedData['pendidikan_ibu'],
+            'pekerjaan_ayah' => $validatedData['pekerjaan_ayah'],
+            'pekerjaan_ibu' => $validatedData['pekerjaan_ibu'],
+            'nama_wali' => $validatedData['nama_wali'],
+            'hubungan_wali' => $validatedData['hubungan_wali'],
+            'pendidikan_wali' => $validatedData['pendidikan_wali'],
+            'pekerjaan_wali' => $validatedData['pekerjaan_wali']
+        ];
+        ModelOrangTua::create($orangTua);
+
+        // progress siswa
+        $ProgresSiswa = [
+            'siswa_id' => $siswaBaru['id'],
+            'asal_sekolah' => $validatedData['asal_sekolah'],
+            'nama_tk' => $validatedData['nama_tk'],
+            'tgl_sttb' => $validatedData['tgl_sttb'],
+            'no_sttb' => $validatedData['no_sttb'],
+            'asal_sekolah_pindah' => $validatedData['asal_sekolah_pindah'],
+            'tingkat_sekolah_pindah' => $validatedData['tingkat_sekolah_pindah'],
+            'tgl_diterima' => $validatedData['tgl_diterima'],
+        ];
+
+        ModelProgressSiswa::create($ProgresSiswa);
+
+
+        $kesehatanJasmani = [
+            'siswa_id' => $siswaBaru['id'],
+            // kesehatan jasmani
+            // tahun
+            'jas_th_1' => $validatedData['jas_th_1'],
+            'jas_th_2' => $validatedData['jas_th_2'],
+            'jas_th_3' => $validatedData['jas_th_3'],
+            'jas_th_4' => $validatedData['jas_th_4'],
+            'jas_th_5' => $validatedData['jas_th_5'],
+            'jas_th_6' => $validatedData['jas_th_6'],
+            // berat
+            'jas_bb_1' => $validatedData['jas_bb_1'],
+            'jas_bb_2' => $validatedData['jas_bb_2'],
+            'jas_bb_3' => $validatedData['jas_bb_3'],
+            'jas_bb_4' => $validatedData['jas_bb_4'],
+            'jas_bb_5' => $validatedData['jas_bb_5'],
+            'jas_bb_6' => $validatedData['jas_bb_6'],
+            // tinggi
+            'jas_tb_1' => $validatedData['jas_tb_1'],
+            'jas_tb_2' => $validatedData['jas_tb_2'],
+            'jas_tb_3' => $validatedData['jas_tb_3'],
+            'jas_tb_4' => $validatedData['jas_tb_4'],
+            'jas_tb_5' => $validatedData['jas_tb_5'],
+            'jas_tb_6' => $validatedData['jas_tb_6'],
+
+            // penyakit
+            'jas_pt_1' => $validatedData['jas_pt_1'],
+            'jas_pt_2' => $validatedData['jas_pt_2'],
+            'jas_pt_3' => $validatedData['jas_pt_3'],
+            'jas_pt_4' => $validatedData['jas_pt_4'],
+            'jas_pt_5' => $validatedData['jas_pt_5'],
+            'jas_pt_6' => $validatedData['jas_pt_6'],
+
+            // keahlian
+            'jas_kj_1' => $validatedData['jas_kj_1'],
+            'jas_kj_2' => $validatedData['jas_kj_2'],
+            'jas_kj_3' => $validatedData['jas_kj_3'],
+            'jas_kj_4' => $validatedData['jas_kj_4'],
+            'jas_kj_5' => $validatedData['jas_kj_5'],
+            'jas_kj_6' => $validatedData['jas_kj_6'],
+        ];
+
+        ModelKesehatan::create($kesehatanJasmani);
+
+
+        // beasiswa
+        $beasiswa = [
+            'siswa_id' => $siswaBaru['id'],
+            'beasiswa' =>  $validatedData['beasiswa'],
+        ];
+
+        ModelBeasiswa::create($beasiswa);
+
+        // meninggalkan sekolah
+        $meninggalkanSekolah = [
+            'siswa_id' => $siswaBaru['id'],
+            'thn_tamat' => $validatedData['thn_tamat'],
+            'no_ijazah' => $validatedData['no_ijazah'],
+            'lanjut_sekolah_tamat' => $validatedData['lanjut_sekolah_tamat'],
+            //pindah 
+            'dari_tingkat' => $validatedData['dari_tingkat'],
+            'ke_tingkat' => $validatedData['ke_tingkat'],
+            'lanjut_sekolah_pindah' => $validatedData['lanjut_sekolah_pindah'],
+
+            // keluar
+            'tgl_keluar_sekolah' => $validatedData['tgl_keluar_sekolah'],
+            'alasan_keluar_sekolah' => $validatedData['alasan_keluar_sekolah'],
+        ];
+
+        ModelMeninggalkanSekolah::create($meninggalkanSekolah);
+
+        // lain-lain
+        $lain = [
+            'siswa_id' => $siswaBaru['id'],
+            'lain_lain' =>  $validatedData['lain_lain'],
+        ];
+
+        ModelLainLain::create($lain);
+
+        // buat kelas
+        for ($i=1; $i < 7; $i++) { 
+            $kelas = [
+            'id_siswa' => $siswaBaru['id'],
+            'kelas' => $i,
+            'tinggal_kelas' => 'false',
+            'tahun_ajaran' => NULL,
+            ];
+            ModelKelas::create($kelas);
+        }
         return redirect()->route('siswa.index')
             ->with('success', 'Berhasil Menambahkan Siswa');
     }
@@ -111,8 +333,21 @@ class Siswa extends Controller
     public function show($id)
     {
         $student = Students::find($id);
+        $orangTua = ModelOrangTua::where('siswa_id', $student['id'])->first();
+        $progresSiswa = ModelProgressSiswa::where('siswa_id', $student['id'])->first();
+        $kesehatanJasmani = ModelKesehatan::where('siswa_id', $student['id'])->first();
+        $beasiswa = ModelBeasiswa::where('siswa_id', $student['id'])->first();
+        $meninggalkanSekolah = ModelMeninggalkanSekolah::where('siswa_id', $student['id'])->first();
+        $lain = ModelLainLain::where('siswa_id', $student['id'])->first();
 
-        return view('siswa.siswa_detail_view', compact('student'));
+        return view('siswa.siswa_detail_view')
+            ->with(compact('student'))
+            ->with(compact('orangTua'))
+            ->with(compact('progresSiswa'))
+            ->with(compact('kesehatanJasmani'))
+            ->with(compact('beasiswa'))
+            ->with(compact('meninggalkanSekolah'))
+            ->with(compact('lain'));
     }
 
     /**
@@ -124,8 +359,21 @@ class Siswa extends Controller
     public function edit($id)
     {
         $student = Students::find($id);
+        $orangTua = ModelOrangTua::where('siswa_id', $student['id'])->first();
+        $progresSiswa = ModelProgressSiswa::where('siswa_id', $student['id'])->first();
+        $kesehatanJasmani = ModelKesehatan::where('siswa_id', $student['id'])->first();
+        $beasiswa = ModelBeasiswa::where('siswa_id', $student['id'])->first();
+        $meninggalkanSekolah = ModelMeninggalkanSekolah::where('siswa_id', $student['id'])->first();
+        $lain = ModelLainLain::where('siswa_id', $student['id'])->first();
 
-        return view('siswa.siswa_edit_view', compact('student'));
+        return view('siswa.siswa_edit_view')
+            ->with(compact('student'))
+            ->with(compact('orangTua'))
+            ->with(compact('progresSiswa'))
+            ->with(compact('kesehatanJasmani'))
+            ->with(compact('beasiswa'))
+            ->with(compact('meninggalkanSekolah'))
+            ->with(compact('lain'));
     }
 
     /**
@@ -138,10 +386,10 @@ class Siswa extends Controller
     public function update(Request $request, $id)
     {
         $siswa = Students::find($id);
-        if ($request->nis != $siswa->nis) {
+        if ($request->nis != $siswa->nis || $request->nisn != $siswa->nisn) {
             $validatedData = $request->validate([
                 'nis' => ['required', 'min:4', 'max:4', 'unique:students,nis'],
-                'nisn' => ['string', 'max:10', 'nullable'],
+                'nisn' => ['required', 'min:10', 'max:10', 'unique:students,nisn'],
                 'nik' => ['string', 'max:16', 'nullable'],
                 'no_kk' => ['string', 'max:16', 'nullable'],
                 'nama_lengkap' => ['required', 'string', 'max:255'],
@@ -175,13 +423,70 @@ class Siswa extends Controller
                 'asal_sekolah_pindah' => ['string', 'nullable', 'max:100'],
                 'tingkat_sekolah_pindah' => ['string', 'nullable', 'max:2'],
                 'tgl_diterima' => ['string', 'nullable', 'max:20'],
+                // kesehatan jasmani
+                // tahun
+                'jas_th_1' => ['string', 'nullable', 'max:20'],
+                'jas_th_2' => ['string', 'nullable', 'max:20'],
+                'jas_th_3' => ['string', 'nullable', 'max:20'],
+                'jas_th_4' => ['string', 'nullable', 'max:20'],
+                'jas_th_5' => ['string', 'nullable', 'max:20'],
+                'jas_th_6' => ['string', 'nullable', 'max:20'],
+                // berat
+                'jas_bb_1' => ['string', 'nullable', 'max:20'],
+                'jas_bb_2' => ['string', 'nullable', 'max:20'],
+                'jas_bb_3' => ['string', 'nullable', 'max:20'],
+                'jas_bb_4' => ['string', 'nullable', 'max:20'],
+                'jas_bb_5' => ['string', 'nullable', 'max:20'],
+                'jas_bb_6' => ['string', 'nullable', 'max:20'],
+                // tinggi
+                'jas_tb_1' => ['string', 'nullable', 'max:20'],
+                'jas_tb_2' => ['string', 'nullable', 'max:20'],
+                'jas_tb_3' => ['string', 'nullable', 'max:20'],
+                'jas_tb_4' => ['string', 'nullable', 'max:20'],
+                'jas_tb_5' => ['string', 'nullable', 'max:20'],
+                'jas_tb_6' => ['string', 'nullable', 'max:20'],
+
+                // penyakit
+                'jas_pt_1' => ['string', 'nullable', 'max:255'],
+                'jas_pt_2' => ['string', 'nullable', 'max:255'],
+                'jas_pt_3' => ['string', 'nullable', 'max:255'],
+                'jas_pt_4' => ['string', 'nullable', 'max:255'],
+                'jas_pt_5' => ['string', 'nullable', 'max:255'],
+                'jas_pt_6' => ['string', 'nullable', 'max:255'],
+
+                // keahlian
+                'jas_kj_1' => ['string', 'nullable', 'max:255'],
+                'jas_kj_2' => ['string', 'nullable', 'max:255'],
+                'jas_kj_3' => ['string', 'nullable', 'max:255'],
+                'jas_kj_4' => ['string', 'nullable', 'max:255'],
+                'jas_kj_5' => ['string', 'nullable', 'max:255'],
+                'jas_kj_6' => ['string', 'nullable', 'max:255'],
+
+                // beasiswa
+                'beasiswa' => ['string', 'nullable', 'max:255'],
+                // meninggalkan sekolah
+                //tamat
+                'thn_tamat' => ['string', 'nullable', 'max:50'],
+                'no_ijazah' => ['string', 'nullable', 'max:255'],
+                'lanjut_sekolah_tamat' => ['string', 'nullable', 'max:255'],
+                //pindah 
+                'dari_tingkat' => ['string', 'nullable', 'max:5'],
+                'ke_tingkat' => ['string', 'nullable', 'max:5'],
+                'lanjut_sekolah_pindah' => ['string', 'nullable', 'max:255'],
+
+                // keluar
+                'tgl_keluar_sekolah' => ['string', 'nullable', 'max:50'],
+                'alasan_keluar_sekolah' => ['string', 'nullable', 'max:255'],
+                // lain-lain
+                'lain_lain' => ['string', 'nullable', 'max:255'],
+                // foto
                 'foto_siswa' => 'image|file|max:2048|mimes:png,jpg,jpeg|dimensions:max_width=200,max_height=300',
 
             ]);
-        }else{
+        } else {
             $validatedData = $request->validate([
                 'nis' => ['required', 'min:4', 'max:4'],
-                'nisn' => ['string', 'max:10', 'nullable'],
+                'nisn' => ['required', 'min:10', 'max:10'],
                 'nik' => ['string', 'max:16', 'nullable'],
                 'no_kk' => ['string', 'max:16', 'nullable'],
                 'nama_lengkap' => ['required', 'string', 'max:255'],
@@ -215,14 +520,71 @@ class Siswa extends Controller
                 'asal_sekolah_pindah' => ['string', 'nullable', 'max:100'],
                 'tingkat_sekolah_pindah' => ['string', 'nullable', 'max:2'],
                 'tgl_diterima' => ['string', 'nullable', 'max:20'],
+                // kesehatan jasmani
+                // tahun
+                'jas_th_1' => ['string', 'nullable', 'max:20'],
+                'jas_th_2' => ['string', 'nullable', 'max:20'],
+                'jas_th_3' => ['string', 'nullable', 'max:20'],
+                'jas_th_4' => ['string', 'nullable', 'max:20'],
+                'jas_th_5' => ['string', 'nullable', 'max:20'],
+                'jas_th_6' => ['string', 'nullable', 'max:20'],
+                // berat
+                'jas_bb_1' => ['string', 'nullable', 'max:20'],
+                'jas_bb_2' => ['string', 'nullable', 'max:20'],
+                'jas_bb_3' => ['string', 'nullable', 'max:20'],
+                'jas_bb_4' => ['string', 'nullable', 'max:20'],
+                'jas_bb_5' => ['string', 'nullable', 'max:20'],
+                'jas_bb_6' => ['string', 'nullable', 'max:20'],
+                // tinggi
+                'jas_tb_1' => ['string', 'nullable', 'max:20'],
+                'jas_tb_2' => ['string', 'nullable', 'max:20'],
+                'jas_tb_3' => ['string', 'nullable', 'max:20'],
+                'jas_tb_4' => ['string', 'nullable', 'max:20'],
+                'jas_tb_5' => ['string', 'nullable', 'max:20'],
+                'jas_tb_6' => ['string', 'nullable', 'max:20'],
+
+                // penyakit
+                'jas_pt_1' => ['string', 'nullable', 'max:255'],
+                'jas_pt_2' => ['string', 'nullable', 'max:255'],
+                'jas_pt_3' => ['string', 'nullable', 'max:255'],
+                'jas_pt_4' => ['string', 'nullable', 'max:255'],
+                'jas_pt_5' => ['string', 'nullable', 'max:255'],
+                'jas_pt_6' => ['string', 'nullable', 'max:255'],
+
+                // keahlian
+                'jas_kj_1' => ['string', 'nullable', 'max:255'],
+                'jas_kj_2' => ['string', 'nullable', 'max:255'],
+                'jas_kj_3' => ['string', 'nullable', 'max:255'],
+                'jas_kj_4' => ['string', 'nullable', 'max:255'],
+                'jas_kj_5' => ['string', 'nullable', 'max:255'],
+                'jas_kj_6' => ['string', 'nullable', 'max:255'],
+
+                // beasiswa
+                'beasiswa' => ['string', 'nullable', 'max:255'],
+                // meninggalkan sekolah
+                //tamat
+                'thn_tamat' => ['string', 'nullable', 'max:50'],
+                'no_ijazah' => ['string', 'nullable', 'max:255'],
+                'lanjut_sekolah_tamat' => ['string', 'nullable', 'max:255'],
+                //pindah 
+                'dari_tingkat' => ['string', 'nullable', 'max:5'],
+                'ke_tingkat' => ['string', 'nullable', 'max:5'],
+                'lanjut_sekolah_pindah' => ['string', 'nullable', 'max:255'],
+
+                // keluar
+                'tgl_keluar_sekolah' => ['string', 'nullable', 'max:50'],
+                'alasan_keluar_sekolah' => ['string', 'nullable', 'max:255'],
+                // lain-lain
+                'lain_lain' => ['string', 'nullable', 'max:255'],
+                // foto
                 'foto_siswa' => 'image|file|max:2048|mimes:png,jpg,jpeg|dimensions:max_width=200,max_height=300',
 
             ]);
         }
 
 
-        // dd($validatedData);
-        
+
+
 
         if ($request->file('foto_siswa')) {
             Storage::delete('public/images/foto-siswa/' . $siswa['foto_siswa']);
@@ -230,11 +592,145 @@ class Siswa extends Controller
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('foto_siswa')->storeAs('public/images/foto-siswa', $fileName);
             $validatedData['foto_siswa'] = $fileName;
+        } else {
+            $validatedData['foto_siswa'] = $siswa['foto_siswa'];
         }
 
+        $update_siswa = [
+            'nis' => $validatedData['nis'],
+            'nisn' => $validatedData['nisn'],
+            'nik' => $validatedData['nik'],
+            'no_kk' => $validatedData['no_kk'],
+            'nama_lengkap' => $validatedData['nama_lengkap'],
+            'nama_panggilan' => $validatedData['nama_panggilan'],
+            'jen_kel' => $validatedData['jen_kel'],
+            'tempat_lahir' => $validatedData['tempat_lahir'],
+            'tgl_lahir' => $validatedData['tgl_lahir'],
+            'agama' => $validatedData['agama'],
+            'kewarganegaraan' => $validatedData['kewarganegaraan'],
+            'jml_saudara' => $validatedData['jml_saudara'],
+            'bahasa' => $validatedData['bahasa'],
+            'gol_darah' => $validatedData['gol_darah'],
+            'alamat' => $validatedData['alamat'],
+            'telepon' => $validatedData['telepon'],
+            'tempat_tinggal' => $validatedData['tempat_tinggal'],
+            'jarak' => $validatedData['jarak'],
+            'foto_siswa' => $validatedData['foto_siswa']
+        ];
 
-        // dd($validatedData);
-        Students::where('id', $id)->update($validatedData);
+        Students::where('id', $id)->update($update_siswa);
+
+        // orang tua
+        $update_orangTua = [
+            'siswa_id' => $siswa['id'],
+            'nama_ayah' => $validatedData['nama_ayah'],
+            'nama_ibu' => $validatedData['nama_ibu'],
+            'pendidikan_ayah' => $validatedData['pendidikan_ayah'],
+            'pendidikan_ibu' => $validatedData['pendidikan_ibu'],
+            'pekerjaan_ayah' => $validatedData['pekerjaan_ayah'],
+            'pekerjaan_ibu' => $validatedData['pekerjaan_ibu'],
+            'nama_wali' => $validatedData['nama_wali'],
+            'hubungan_wali' => $validatedData['hubungan_wali'],
+            'pendidikan_wali' => $validatedData['pendidikan_wali'],
+            'pekerjaan_wali' => $validatedData['pekerjaan_wali']
+        ];
+        ModelOrangTua::where('siswa_id', $id)->update($update_orangTua);
+
+        // progress siswa
+        $update_ProgresSiswa = [
+            'siswa_id' => $siswa['id'],
+            'asal_sekolah' => $validatedData['asal_sekolah'],
+            'nama_tk' => $validatedData['nama_tk'],
+            'tgl_sttb' => $validatedData['tgl_sttb'],
+            'no_sttb' => $validatedData['no_sttb'],
+            'asal_sekolah_pindah' => $validatedData['asal_sekolah_pindah'],
+            'tingkat_sekolah_pindah' => $validatedData['tingkat_sekolah_pindah'],
+            'tgl_diterima' => $validatedData['tgl_diterima'],
+        ];
+
+        ModelProgressSiswa::where('siswa_id', $id)->update($update_ProgresSiswa);
+
+        $update_kesehatanJasmani = [
+            'siswa_id' => $siswa['id'],
+            // kesehatan jasmani
+            // tahun
+            'jas_th_1' => $validatedData['jas_th_1'],
+            'jas_th_2' => $validatedData['jas_th_2'],
+            'jas_th_3' => $validatedData['jas_th_3'],
+            'jas_th_4' => $validatedData['jas_th_4'],
+            'jas_th_5' => $validatedData['jas_th_5'],
+            'jas_th_6' => $validatedData['jas_th_6'],
+            // berat
+            'jas_bb_1' => $validatedData['jas_bb_1'],
+            'jas_bb_2' => $validatedData['jas_bb_2'],
+            'jas_bb_3' => $validatedData['jas_bb_3'],
+            'jas_bb_4' => $validatedData['jas_bb_4'],
+            'jas_bb_5' => $validatedData['jas_bb_5'],
+            'jas_bb_6' => $validatedData['jas_bb_6'],
+            // tinggi
+            'jas_tb_1' => $validatedData['jas_tb_1'],
+            'jas_tb_2' => $validatedData['jas_tb_2'],
+            'jas_tb_3' => $validatedData['jas_tb_3'],
+            'jas_tb_4' => $validatedData['jas_tb_4'],
+            'jas_tb_5' => $validatedData['jas_tb_5'],
+            'jas_tb_6' => $validatedData['jas_tb_6'],
+
+            // penyakit
+            'jas_pt_1' => $validatedData['jas_pt_1'],
+            'jas_pt_2' => $validatedData['jas_pt_2'],
+            'jas_pt_3' => $validatedData['jas_pt_3'],
+            'jas_pt_4' => $validatedData['jas_pt_4'],
+            'jas_pt_5' => $validatedData['jas_pt_5'],
+            'jas_pt_6' => $validatedData['jas_pt_6'],
+
+            // keahlian
+            'jas_kj_1' => $validatedData['jas_kj_1'],
+            'jas_kj_2' => $validatedData['jas_kj_2'],
+            'jas_kj_3' => $validatedData['jas_kj_3'],
+            'jas_kj_4' => $validatedData['jas_kj_4'],
+            'jas_kj_5' => $validatedData['jas_kj_5'],
+            'jas_kj_6' => $validatedData['jas_kj_6'],
+        ];
+
+        ModelKesehatan::where('siswa_id', $id)->update($update_kesehatanJasmani);
+
+
+
+        // beasiswa
+        $update_beasiswa = [
+            'siswa_id' => $siswa['id'],
+            'beasiswa' =>  $validatedData['beasiswa'],
+        ];
+
+        ModelBeasiswa::where('siswa_id', $id)->update($update_beasiswa);
+
+
+        // meninggalkan sekolah
+        $update_meninggalkanSekolah = [
+            'siswa_id' => $siswa['id'],
+            'thn_tamat' => $validatedData['thn_tamat'],
+            'no_ijazah' => $validatedData['no_ijazah'],
+            'lanjut_sekolah_tamat' => $validatedData['lanjut_sekolah_tamat'],
+            //pindah 
+            'dari_tingkat' => $validatedData['dari_tingkat'],
+            'ke_tingkat' => $validatedData['ke_tingkat'],
+            'lanjut_sekolah_pindah' => $validatedData['lanjut_sekolah_pindah'],
+
+            // keluar
+            'tgl_keluar_sekolah' => $validatedData['tgl_keluar_sekolah'],
+            'alasan_keluar_sekolah' => $validatedData['alasan_keluar_sekolah'],
+        ];
+
+        ModelMeninggalkanSekolah::where('siswa_id', $id)->update($update_meninggalkanSekolah);
+
+
+        // lain-lain
+        $update_lain = [
+            'siswa_id' => $siswa['id'],
+            'lain_lain' =>  $validatedData['lain_lain'],
+        ];
+
+        ModelLainLain::where('siswa_id', $id)->update($update_lain);
 
         return redirect()->route('siswa.index')
             ->with('success', 'Berhasil Update Siswa');
@@ -253,7 +749,39 @@ class Siswa extends Controller
             Storage::delete('public/images/foto-siswa/' . $siswa['foto_siswa']);
         }
         Students::where('id', $id)->delete();
-        return redirect()->route('siswa.index')
-            ->with('success', 'Berhasil Menghapus Siswa');
+        ModelOrangTua::where('siswa_id', $id)->delete();
+        ModelProgressSiswa::where('siswa_id', $id)->delete();
+        ModelKesehatan::where('siswa_id', $id)->delete();
+        ModelBeasiswa::where('siswa_id', $id)->delete();
+        ModelMeninggalkanSekolah::where('siswa_id', $id)->delete();
+        ModelLainLain::where('siswa_id', $id)->delete();
+
+        // delete kelas
+        ModelKelas::where('id_siswa', $id)->delete();
+        // delete nilai
+        PelajarPancasila::where('siswa', $siswa->nama_lengkap)->delete();
+        Pengetahuan::where('siswa', $siswa->nama_lengkap)->delete();
+        Ekstrakulikuler::where('siswa', $siswa->nama_lengkap)->delete();
+        Prestasi::where('siswa', $siswa->nama_lengkap)->delete();
+        Ketidakhadiran::where('siswa', $siswa->nama_lengkap)->delete();
+        ModelKenaikan::where('siswa', $siswa->nama_lengkap)->delete();
+        ModelTandaTangan::where('siswa', $siswa->nama_lengkap)->delete();
+
+        // delete kompetensi
+        ModelKompetensi::where('id_siswa', $id)->delete();
+
+        // delete ijazah
+        $file = ModelIjazah::where('id_siswa', $id)->first();
+        if ($file->ijazah != null) {
+            Storage::delete('public/pdf/ijazah/' . $file->ijazah);
+        }
+        if ($file->skl != null) {
+            Storage::delete('public/pdf/skl/' . $file->skl);
+        }
+        if ($file->skhun != null) {
+            Storage::delete('public/pdf/skhun/' . $file->skhun);
+        }
+        ModelIjazah::where('id_siswa', $id)->delete();
+
     }
 }

@@ -117,52 +117,52 @@
                        <tr>
                            <td width="30%">Nama Ayah</td>
                            <td width="3%">:</td>
-                           <td>{{$student->nama_ayah == null ? "-" : $student->nama_ayah}}</td>
+                           <td>{{$orangTua->nama_ayah == null ? "-" : $orangTua->nama_ayah}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Nama Ibu</td>
                            <td width="3%">:</td>
-                           <td>{{$student->nama_ibu == null ? "-" : $student->nama_ibu}}</td>
+                           <td>{{$orangTua->nama_ibu == null ? "-" : $orangTua->nama_ibu}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Pendidikan Ayah</td>
                            <td width="3%">:</td>
-                           <td>{{($student->pendidikan_ayah == "Tidak Sekolah" && $student->nama_ayah == null) ? "-" : $student->pendidikan_ayah}}</td>
+                           <td>{{($orangTua->pendidikan_ayah == "Tidak Sekolah" && $orangTua->nama_ayah == null) ? "-" : $orangTua->pendidikan_ayah}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Pendidikan Ibu</td>
                            <td width="3%">:</td>
-                           <td>{{($student->pendidikan_ibu == "Tidak Sekolah" && $student->nama_ibu == null) ? "-" : $student->pendidikan_ibu}}</td>
+                           <td>{{($orangTua->pendidikan_ibu == "Tidak Sekolah" && $orangTua->nama_ibu == null) ? "-" : $orangTua->pendidikan_ibu}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Pekerjaan Ayah</td>
                            <td width="3%">:</td>
-                           <td>{{$student->pekerjaan_ayah == null ? "-" : $student->pekerjaan_ayah}}</td>
+                           <td>{{$orangTua->pekerjaan_ayah == null ? "-" : $orangTua->pekerjaan_ayah}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Pekerjaan Ibu</td>
                            <td width="3%">:</td>
-                           <td>{{$student->pekerjaan_ibu == null ? "-" : $student->pekerjaan_ibu}}</td>
+                           <td>{{$orangTua->pekerjaan_ibu == null ? "-" : $orangTua->pekerjaan_ibu}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Nama Wali</td>
                            <td width="3%">:</td>
-                           <td>{{$student->nama_wali == null ? "-" : $student->nama_wali}}</td>
+                           <td>{{$orangTua->nama_wali == null ? "-" : $orangTua->nama_wali}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Hubungan Wali</td>
                            <td width="3%">:</td>
-                           <td>{{$student->hubungan_wali == null ? "-" : $student->hubungan_wali}}</td>
+                           <td>{{$orangTua->hubungan_wali == null ? "-" : $orangTua->hubungan_wali}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Pendidikan Wali</td>
                            <td width="3%">:</td>
-                           <td>{{($student->pendidikan_wali == "Tidak Sekolah" && $student->nama_wali == null) ? "-" : $student->pendidikan_wali}}</td>
+                           <td>{{($orangTua->pendidikan_wali == "Tidak Sekolah" && $orangTua->nama_wali == null) ? "-" : $orangTua->pendidikan_wali}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Pekerjaan Wali</td>
                            <td width="3%">:</td>
-                           <td>{{$student->pekerjaan_wali == null ? "-" : $student->pekerjaan_wali}}</td>
+                           <td>{{$orangTua->pekerjaan_wali == null ? "-" : $orangTua->pekerjaan_wali}}</td>
                        </tr>
                       
                    </table>
@@ -174,41 +174,183 @@
                        <tr>
                            <td width="30%">Asal Sekolah</td>
                            <td width="3%">:</td>
-                           <td>{{$student->asal_sekolah == null ? "-" : $student->asal_sekolah}}</td>
+                           <td>{{$progresSiswa->asal_sekolah == null ? "-" : $progresSiswa->asal_sekolah}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Nama TK</td>
                            <td width="3%">:</td>
-                           <td>{{$student->nama_tk == null ? "-" : $student->nama_tk}}</td>
+                           <td>{{$progresSiswa->nama_tk == null ? "-" : $progresSiswa->nama_tk}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Tanggal STTB</td>
                            <td width="3%">:</td>
-                           <td>{{$student->tgl_sttb == null ? "-" : $student->tgl_sttb}}</td>
+                           <td>{{$progresSiswa->tgl_sttb == null ? "-" : $progresSiswa->tgl_sttb}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Nomor STTB</td>
                            <td width="3%">:</td>
-                           <td>{{$student->no_sttb == null ? "-" : $student->no_sttb}}</td>
+                           <td>{{$progresSiswa->no_sttb == null ? "-" : $progresSiswa->no_sttb}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Asal Sekolah (Pindah)</td>
                            <td width="3%">:</td>
-                           <td>{{$student->asal_sekolah_pindah == null ? "-" : $student->asal_sekolah_pindah}}</td>
+                           <td>{{$progresSiswa->asal_sekolah_pindah == null ? "-" : $progresSiswa->asal_sekolah_pindah}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Tingkat Sekolah (Pindah)</td>
                            <td width="3%">:</td>
-                           <td>{{($student->asal_sekolah_pindah == null && $student->tingkat_sekolah_pindah == "1") ? "-" : $student->tingkat_sekolah_pindah}}</td>
+                           <td>{{($progresSiswa->asal_sekolah_pindah == null && $progresSiswa->tingkat_sekolah_pindah == "1") ? "-" : $progresSiswa->tingkat_sekolah_pindah}}</td>
                        </tr>
                        <tr>
                            <td width="30%">Tanggal Diterima</td>
                            <td width="3%">:</td>
-                           <td>{{$student->tgl_diterima == null ? "-" : $student->tgl_diterima}}</td>
+                           <td>{{$progresSiswa->tgl_diterima == null ? "-" : $progresSiswa->tgl_diterima}}</td>
                        </tr>
                       
                    </table>
                 </x-adminlte-card>
+                {{--  --}}
+                {{-- Kesehatan siswa --}}
+                <x-adminlte-card title="Kesehatan Jasmani" theme="dark" collapsible="collapsed">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Tahun</th>
+                                    <td>{{$kesehatanJasmani->jas_th_1}}</td>
+                                    <td>{{$kesehatanJasmani->jas_th_2}}</td>
+                                    <td>{{$kesehatanJasmani->jas_th_3}}</td>
+                                    <td>{{$kesehatanJasmani->jas_th_4}}</td>
+                                    <td>{{$kesehatanJasmani->jas_th_5}}</td>
+                                    <td>{{$kesehatanJasmani->jas_th_6}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Berat Badan</th>
+                                    <td>{{$kesehatanJasmani->jas_bb_1}} kg</td>
+                                    <td>{{$kesehatanJasmani->jas_bb_2}} kg</td>
+                                    <td>{{$kesehatanJasmani->jas_bb_3}} kg</td>
+                                    <td>{{$kesehatanJasmani->jas_bb_4}} kg</td>
+                                    <td>{{$kesehatanJasmani->jas_bb_5}} kg</td>
+                                    <td>{{$kesehatanJasmani->jas_bb_6}} kg</td>
+                                </tr>
+                                <tr>
+                                    <th>Tinggi Badan</th>
+                                    <td>{{$kesehatanJasmani->jas_tb_1}} cm</td>
+                                    <td>{{$kesehatanJasmani->jas_tb_2}} cm</td>
+                                    <td>{{$kesehatanJasmani->jas_tb_3}} cm</td>
+                                    <td>{{$kesehatanJasmani->jas_tb_4}} cm</td>
+                                    <td>{{$kesehatanJasmani->jas_tb_5}} cm</td>
+                                    <td>{{$kesehatanJasmani->jas_tb_6}} cm</td>
+                                </tr>
+                                <tr>
+                                    <th>Penyakit</th>
+                                    <td>{{$kesehatanJasmani->jas_pt_1}}</td>
+                                    <td>{{$kesehatanJasmani->jas_pt_2}}</td>
+                                    <td>{{$kesehatanJasmani->jas_pt_3}}</td>
+                                    <td>{{$kesehatanJasmani->jas_pt_4}}</td>
+                                    <td>{{$kesehatanJasmani->jas_pt_5}}</td>
+                                    <td>{{$kesehatanJasmani->jas_pt_6}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Keahlian Jasmani</th>
+                                    <td>{{$kesehatanJasmani->jas_kj_1}}</td>
+                                    <td>{{$kesehatanJasmani->jas_kj_2}}</td>
+                                    <td>{{$kesehatanJasmani->jas_kj_3}}</td>
+                                    <td>{{$kesehatanJasmani->jas_kj_4}}</td>
+                                    <td>{{$kesehatanJasmani->jas_kj_5}}</td>
+                                    <td>{{$kesehatanJasmani->jas_kj_6}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </x-adminlte-card>
+                {{--  --}}
+                 {{-- Beasiswa siswa --}}
+                 <x-adminlte-card title="Beasiswa" theme="dark" collapsible="collapsed">
+                    <table width="100%" >
+                        <tr>
+                            <td width="30%">Jenis Beasiswa</td>
+                            <td width="3%">:</td>
+                            <td>{{$beasiswa->beasiswa == null? '-' : $beasiswa->beasiswa}}</td>
+                        </tr>
+                    </table>
+                 </x-adminlte-card>
+                 {{--  --}}
+
+                  {{-- Perkembangan siswa --}}
+                <x-adminlte-card title="Meninggalkan Sekolah" theme="dark" collapsible="collapsed">
+                    <table width="100%" >
+                        <tr>
+                            <th>
+                                <h6 class="font-weight-bold">A. Tamat Belajar</h6>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td width="30%">Tahun Tamat</td>
+                            <td width="3%">:</td>
+                            <td>{{$meninggalkanSekolah->thn_tamat == null? '-' : $meninggalkanSekolah->thn_tamat}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Nomor Ijazah / STTB</td>
+                            <td width="3%">:</td>
+                            <td>{{$meninggalkanSekolah->no_ijazah == null? '-' : $meninggalkanSekolah->no_ijazah}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Melanjutkan Ke Sekolah</td>
+                            <td width="3%">:</td>
+                            <td>{{$meninggalkanSekolah->lanjut_sekolah_tamat == null? '-' : $meninggalkanSekolah->lanjut_sekolah_tamat}}</td>
+                        </tr>
+                        <tr >
+                            <th class="pt-4">
+                                <h6 class="font-weight-bold">B. Pindah Sekolah</h6>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td width="30%">Dari Tingkat</td>
+                            <td width="3%">:</td>
+                            <td>{{($meninggalkanSekolah->lanjut_sekolah_pindah == null && $meninggalkanSekolah->dari_tingkat == "1") ? "-" : $meninggalkanSekolah->dari_tingkat}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Ke Tingkat</td>
+                            <td width="3%">:</td>
+                            <td>{{ ($meninggalkanSekolah->lanjut_sekolah_pindah == null && $meninggalkanSekolah->ke_tingkat == "1") ? "-" : $meninggalkanSekolah->ke_tingkat}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Ke Sekolah</td>
+                            <td width="3%">:</td>
+                            <td>{{$meninggalkanSekolah->lanjut_sekolah_pindah == null? '-' : $meninggalkanSekolah->lanjut_sekolah_pindah}}</td>
+                        </tr>
+                        <tr>
+                            <th class="pt-4">
+                                <h6 class="font-weight-bold">C. Keluar Sekolah</h6>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td width="30%">Tanggal Keluar</td>
+                            <td width="3%">:</td>
+                            <td>{{$meninggalkanSekolah->tgl_keluar_sekolah == null? '-' : $meninggalkanSekolah->tgl_keluar_sekolah}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Alasan Keluar</td>
+                            <td width="3%">:</td>
+                            <td>{{$meninggalkanSekolah->alasan_keluar_sekolah == null? '-' : $meninggalkanSekolah->alasan_keluar_sekolah}}</td>
+                        </tr>
+                       
+                    </table>
+                 </x-adminlte-card>
+                 {{--  --}}
+                  {{-- Lain-lain  --}}
+                  <x-adminlte-card title="Lain-lain" theme="dark" collapsible="collapsed">
+                    <table width="100%" >
+                        <tr>
+                            <td width="30%">Lain-lain</td>
+                            <td width="3%">:</td>
+                            <td>{{$lain->lain_lain == null? '-' : $lain->lain_lain}}</td>
+                        </tr>
+                    </table>
+                 </x-adminlte-card>
+                 {{--  --}}
             </div>
 
             <x-adminlte-button class="btn-flat text-light col-md-2 mb-3" onclick="return back();" label="Kembali" theme="primary"
