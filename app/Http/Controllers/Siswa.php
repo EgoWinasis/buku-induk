@@ -765,6 +765,13 @@ class Siswa extends Controller
         Prestasi::where('siswa', $siswa->nama_lengkap)->delete();
         Ketidakhadiran::where('siswa', $siswa->nama_lengkap)->delete();
         ModelKenaikan::where('siswa', $siswa->nama_lengkap)->delete();
+        $ttd =   ModelTandaTangan::where('siswa', $siswa->nama_lengkap)->first();
+        if ($ttd->barcode_kepsek != null) {
+            Storage::delete('public/images/barcode/' . $ttd->barcode_kepsek);
+        }
+        if ($ttd->barcode_wali_kelas != null) {
+            Storage::delete('public/images/barcode/' . $ttd->barcode_wali_kelas);
+        }
         ModelTandaTangan::where('siswa', $siswa->nama_lengkap)->delete();
 
         // delete kompetensi
