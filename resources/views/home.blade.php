@@ -22,7 +22,7 @@
                   <p>Siswa</p>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-users text-white"></i>
+                  <i class="fas fa-users text-white" style="opacity: 0.4"></i>
                 </div>
                 <a href="{{route('siswa.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -38,7 +38,7 @@
                   <p>Nilai</p>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-book text-white"></i>
+                  <i class="fas fa-book text-white" style="opacity: 0.4"></i>
                 </div>
                 <a href="{{route('nilai.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -53,7 +53,7 @@
                   <p>Kompetensi</p>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-trophy text-white"></i>
+                  <i class="fas fa-trophy text-white" style="opacity: 0.4"></i>
                 </div>
                 <a href="{{route('nilai.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -68,7 +68,7 @@
                   <p>Ijazah</p>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-graduation-cap text-white"></i>
+                  <i class="fas fa-graduation-cap text-white" style="opacity: 0.4"></i>
                 </div>
                 <a href="{{route('ijazah.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
