@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Bulan Mei 2023 pada 05.04
+-- Waktu pembuatan: 05 Bulan Mei 2023 pada 02.54
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -35,6 +35,13 @@ CREATE TABLE `beasiswa` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `beasiswa`
+--
+
+INSERT INTO `beasiswa` (`id`, `siswa_id`, `beasiswa`, `created_at`, `updated_at`) VALUES
+(12, 19, NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00');
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +58,18 @@ CREATE TABLE `class` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `class`
+--
+
+INSERT INTO `class` (`id`, `id_siswa`, `kelas`, `tinggal_kelas`, `tahun_ajaran`, `created_at`, `updated_at`) VALUES
+(89, 19, '1', 'false', '2022/2023', '2023-05-04 17:49:00', '2023-05-04 17:50:43'),
+(90, 19, '2', 'false', NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00'),
+(91, 19, '3', 'false', NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00'),
+(92, 19, '4', 'false', NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00'),
+(93, 19, '5', 'false', NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00'),
+(94, 19, '6', 'false', NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00');
+
 -- --------------------------------------------------------
 
 --
@@ -62,13 +81,20 @@ CREATE TABLE `ekstrakulikuler` (
   `tahun_ajaran` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kelas` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `b1c1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `b1c2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `b2c1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `b2c2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `b1c1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `b1c2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `b2c1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `b2c2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `ekstrakulikuler`
+--
+
+INSERT INTO `ekstrakulikuler` (`id`, `tahun_ajaran`, `kelas`, `siswa`, `b1c1`, `b1c2`, `b2c1`, `b2c2`, `created_at`, `updated_at`) VALUES
+(16, '2022/2023', '1', 'Ahmad Sodikin', NULL, NULL, NULL, NULL, '2023-05-04 17:50:43', '2023-05-04 17:50:43');
 
 -- --------------------------------------------------------
 
@@ -102,6 +128,13 @@ CREATE TABLE `ijazah` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `ijazah`
+--
+
+INSERT INTO `ijazah` (`id`, `id_siswa`, `ijazah`, `skl`, `skhun`, `created_at`, `updated_at`) VALUES
+(3, '19', '645453501f3e8.pdf', '645453502b411.pdf', '645453502c239.pdf', '2023-05-04 17:52:32', '2023-05-04 17:52:32');
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +151,13 @@ CREATE TABLE `kenaikan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `kenaikan`
+--
+
+INSERT INTO `kenaikan` (`id`, `tahun_ajaran`, `kelas`, `siswa`, `status`, `status_kelas`, `created_at`, `updated_at`) VALUES
+(6, '2022/2023', '1', 'Ahmad Sodikin', 'Naik', '1', '2023-05-04 17:50:43', '2023-05-04 17:50:43');
 
 -- --------------------------------------------------------
 
@@ -162,6 +202,13 @@ CREATE TABLE `kesehatan_jasmani` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `kesehatan_jasmani`
+--
+
+INSERT INTO `kesehatan_jasmani` (`id`, `siswa_id`, `jas_th_1`, `jas_th_2`, `jas_th_3`, `jas_th_4`, `jas_th_5`, `jas_th_6`, `jas_bb_1`, `jas_bb_2`, `jas_bb_3`, `jas_bb_4`, `jas_bb_5`, `jas_bb_6`, `jas_tb_1`, `jas_tb_2`, `jas_tb_3`, `jas_tb_4`, `jas_tb_5`, `jas_tb_6`, `jas_pt_1`, `jas_pt_2`, `jas_pt_3`, `jas_pt_4`, `jas_pt_5`, `jas_pt_6`, `jas_kj_1`, `jas_kj_2`, `jas_kj_3`, `jas_kj_4`, `jas_kj_5`, `jas_kj_6`, `created_at`, `updated_at`) VALUES
+(12, 19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00');
+
 -- --------------------------------------------------------
 
 --
@@ -179,6 +226,13 @@ CREATE TABLE `ketidakhadiran` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `ketidakhadiran`
+--
+
+INSERT INTO `ketidakhadiran` (`id`, `tahun_ajaran`, `kelas`, `siswa`, `sakit`, `izin`, `tanpa_keterangan`, `created_at`, `updated_at`) VALUES
+(15, '2022/2023', '1', 'Ahmad Sodikin', NULL, NULL, NULL, '2023-05-04 17:50:43', '2023-05-04 17:50:43');
 
 -- --------------------------------------------------------
 
@@ -219,6 +273,13 @@ CREATE TABLE `kompetensi` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `kompetensi`
+--
+
+INSERT INTO `kompetensi` (`id`, `id_siswa`, `mapel_1`, `ck_1_1`, `ck_1_2`, `mapel_2`, `ck_2_1`, `ck_2_2`, `mapel_3`, `ck_3_1`, `ck_3_2`, `mapel_4`, `ck_4_1`, `ck_4_2`, `mapel_5`, `ck_5_1`, `ck_5_2`, `mapel_6`, `ck_6_1`, `ck_6_2`, `mapel_7`, `kls`, `ck_7_1`, `ck_7_2`, `mapel_8`, `kls_2`, `ck_8_1`, `ck_8_2`, `created_at`, `updated_at`) VALUES
+(3, '19', '1', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, '1', NULL, NULL, '2023-05-04 17:51:34', '2023-05-04 17:51:34');
+
 -- --------------------------------------------------------
 
 --
@@ -232,6 +293,13 @@ CREATE TABLE `lain_lain` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `lain_lain`
+--
+
+INSERT INTO `lain_lain` (`id`, `siswa_id`, `lain_lain`, `created_at`, `updated_at`) VALUES
+(12, 19, NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00');
 
 -- --------------------------------------------------------
 
@@ -253,6 +321,13 @@ CREATE TABLE `meninggalkan_sekolah` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `meninggalkan_sekolah`
+--
+
+INSERT INTO `meninggalkan_sekolah` (`id`, `siswa_id`, `thn_tamat`, `no_ijazah`, `lanjut_sekolah_tamat`, `dari_tingkat`, `ke_tingkat`, `lanjut_sekolah_pindah`, `tgl_keluar_sekolah`, `alasan_keluar_sekolah`, `created_at`, `updated_at`) VALUES
+(12, 19, NULL, NULL, NULL, '1', '1', NULL, NULL, NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00');
 
 -- --------------------------------------------------------
 
@@ -317,6 +392,13 @@ CREATE TABLE `parents` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `parents`
+--
+
+INSERT INTO `parents` (`id`, `siswa_id`, `nama_ayah`, `nama_ibu`, `pendidikan_ayah`, `pendidikan_ibu`, `pekerjaan_ayah`, `pekerjaan_ibu`, `nama_wali`, `hubungan_wali`, `pendidikan_wali`, `pekerjaan_wali`, `created_at`, `updated_at`) VALUES
+(16, 19, NULL, NULL, 'Tidak Sekolah', 'Tidak Sekolah', NULL, NULL, NULL, NULL, 'Tidak Sekolah', NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00');
+
 -- --------------------------------------------------------
 
 --
@@ -362,6 +444,13 @@ CREATE TABLE `pelajar_pancasila` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `pelajar_pancasila`
+--
+
+INSERT INTO `pelajar_pancasila` (`id`, `tahun_ajaran`, `kelas`, `siswa`, `b1c1`, `b1c2`, `b2c1`, `b2c2`, `b3c1`, `b3c2`, `b4c1`, `b4c2`, `b5c1`, `b5c2`, `b6c1`, `b6c2`, `created_at`, `updated_at`) VALUES
+(17, '2022/2023', '1', 'Ahmad Sodikin', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2023-05-04 17:50:43', '2023-05-04 17:50:43');
 
 -- --------------------------------------------------------
 
@@ -430,6 +519,13 @@ CREATE TABLE `pengetahuan` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `pengetahuan`
+--
+
+INSERT INTO `pengetahuan` (`id`, `tahun_ajaran`, `kelas`, `siswa`, `b1c1`, `b1c2`, `b1c3`, `b1c4`, `b2c1`, `b2c2`, `b2c3`, `b2c4`, `b3c1`, `b3c2`, `b3c3`, `b3c4`, `b4c1`, `b4c2`, `b4c3`, `b4c4`, `b5c1`, `b5c2`, `b5c3`, `b5c4`, `b6c1`, `b6c2`, `b6c3`, `b6c4`, `b7c1`, `b7c2`, `b7c3`, `b7c4`, `b8c1`, `b8c2`, `b8c3`, `b8c4`, `b9c1`, `b9c2`, `b9c3`, `b9c4`, `b10c1`, `b10c2`, `b10c3`, `b10c4`, `b11c1`, `b11c2`, `b11c3`, `b11c4`, `b12c1`, `b12c2`, `b12c3`, `b12c4`, `b13c1`, `b13c2`, `b13c3`, `b13c4`, `created_at`, `updated_at`) VALUES
+(17, '2022/2023', '1', 'Ahmad Sodikin', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2023-05-04 17:50:43', '2023-05-04 17:50:43');
+
 -- --------------------------------------------------------
 
 --
@@ -470,6 +566,13 @@ CREATE TABLE `prestasi` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `prestasi`
+--
+
+INSERT INTO `prestasi` (`id`, `tahun_ajaran`, `kelas`, `siswa`, `b1c1`, `b1c2`, `b2c1`, `b2c2`, `b3c1`, `b3c2`, `created_at`, `updated_at`) VALUES
+(16, '2022/2023', '1', 'Ahmad Sodikin', NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-04 17:50:43', '2023-05-04 17:50:43');
+
 -- --------------------------------------------------------
 
 --
@@ -489,6 +592,13 @@ CREATE TABLE `progress_students` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `progress_students`
+--
+
+INSERT INTO `progress_students` (`id`, `siswa_id`, `asal_sekolah`, `nama_tk`, `tgl_sttb`, `no_sttb`, `asal_sekolah_pindah`, `tingkat_sekolah_pindah`, `tgl_diterima`, `created_at`, `updated_at`) VALUES
+(16, 19, NULL, NULL, NULL, NULL, NULL, '1', NULL, '2023-05-04 17:49:00', '2023-05-04 17:49:00');
 
 -- --------------------------------------------------------
 
@@ -521,6 +631,13 @@ CREATE TABLE `students` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `students`
+--
+
+INSERT INTO `students` (`id`, `nis`, `nisn`, `nik`, `no_kk`, `nama_lengkap`, `nama_panggilan`, `jen_kel`, `tempat_lahir`, `tgl_lahir`, `agama`, `kewarganegaraan`, `jml_saudara`, `bahasa`, `gol_darah`, `alamat`, `telepon`, `tempat_tinggal`, `jarak`, `foto_siswa`, `created_at`, `updated_at`) VALUES
+(19, '2104', '0123456789', NULL, NULL, 'Ahmad Sodikin', NULL, 'Laki-laki', 'Tegal', '15-05-2023', 'Islam', NULL, '0', NULL, 'A', NULL, NULL, NULL, NULL, '6454527c956aa.jpg', '2023-05-04 17:49:00', '2023-05-04 17:49:00');
+
 -- --------------------------------------------------------
 
 --
@@ -541,6 +658,13 @@ CREATE TABLE `tanda_tangan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tanda_tangan`
+--
+
+INSERT INTO `tanda_tangan` (`id`, `tahun_ajaran`, `kelas`, `siswa`, `kepsek`, `nip_kepsek`, `barcode_kepsek`, `wali_kelas`, `nip_wali_kelas`, `barcode_wali_kelas`, `created_at`, `updated_at`) VALUES
+(6, '2022/2023', '1', 'Ahmad Sodikin', 'Hartono, S.Pd.', '0122334343', '645452e3df38f.png', 'Sumiyati, S.Ag.', '55454545', '645452e3e4d0e.png', '2023-05-04 17:50:43', '2023-05-04 17:50:43');
 
 -- --------------------------------------------------------
 
@@ -717,19 +841,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `beasiswa`
 --
 ALTER TABLE `beasiswa`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `class`
 --
 ALTER TABLE `class`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT untuk tabel `ekstrakulikuler`
 --
 ALTER TABLE `ekstrakulikuler`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -741,43 +865,43 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `ijazah`
 --
 ALTER TABLE `ijazah`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kenaikan`
 --
 ALTER TABLE `kenaikan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `kesehatan_jasmani`
 --
 ALTER TABLE `kesehatan_jasmani`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `ketidakhadiran`
 --
 ALTER TABLE `ketidakhadiran`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `lain_lain`
 --
 ALTER TABLE `lain_lain`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `meninggalkan_sekolah`
 --
 ALTER TABLE `meninggalkan_sekolah`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -789,19 +913,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `parents`
 --
 ALTER TABLE `parents`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelajar_pancasila`
 --
 ALTER TABLE `pelajar_pancasila`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengetahuan`
 --
 ALTER TABLE `pengetahuan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -813,25 +937,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT untuk tabel `prestasi`
 --
 ALTER TABLE `prestasi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `progress_students`
 --
 ALTER TABLE `progress_students`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `tanda_tangan`
 --
 ALTER TABLE `tanda_tangan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
