@@ -14,7 +14,7 @@ Sistem Informasi Buku Induk Siswa (SIBISA APP)
 
 ##  Framework
 * Laravel 9
-* Template Admin LTE  Versi 3.0
+* Template LAravel - Admin LTE  Versi 3.0 jeroennoten
 * PHP 8.0
 * MPDF
 

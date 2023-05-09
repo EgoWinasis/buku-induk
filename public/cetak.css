@@ -13,12 +13,12 @@
 }
 
 
-.rcorners2 {
-    border-radius: 25px;
-    border: 2px solid black;
-    padding: 20px;
-    width: 100%;
-    margin-top: 60px;
+
+  .siku{
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 20px;
+    margin-top: 50px;
   }
 
 .text-center{
@@ -83,6 +83,34 @@ tr.highlight td{
 .w-30{
   width: 30%;
 }
+.w-45{
+  width: 45%;
+}
 .w-50{
   width: 50%;
+}
+
+.my-20{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/*  kompetensi */
+
+.kompetensi tr{
+  line-height: 1.5cm;
+}
+
+.siswa-induk{
+  margin-top: 20px;
+}
+.siswa-induk td{
+  font-size: 1.2rem;
+  padding-top: 2px;
+}
+
+
+@media print {
+  .pagebreak { page-break-before: always; } /* page-break-after works, as well */
 }

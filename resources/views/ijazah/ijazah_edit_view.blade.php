@@ -27,7 +27,7 @@
         @endif
         <form method="POST" action="{{ route('ijazah.update',$ijazah->id) }}" enctype="multipart/form-data">
             @method('PUT')
-            
+
             @csrf
 
             <div class="row">
@@ -36,25 +36,25 @@
                     <div class="row">
 
                         {{-- ijazah --}}
-                        <x-adminlte-input-file name="ijazah" label="Ijazah"
-                            placeholder="Pilih file PDF.." fgroup-class="col-md-12" />
+                        <x-adminlte-input-file name="ijazah" label="Ijazah" placeholder="Pilih file PDF.."
+                            fgroup-class="col-md-12" />
                         <div class="col-md-12">
                             <label class="font-italic text-success">File :
                                 {{$ijazah->ijazah == null? '': $ijazah->ijazah}}</label>
                         </div>
-                        {{-- SKL --}}
-                        <x-adminlte-input-file name="skl"  label="Surat Keterangan Lulus"
-                            placeholder="Pilih file PDF.." fgroup-class="col-md-12" />
-                        <div class="col-md-12">
-                            <label class="font-italic text-success">File :
-                                {{$ijazah->skl == null? '': $ijazah->skl}}</label>
-                        </div>
                         {{-- SKHUN --}}
-                        <x-adminlte-input-file name="skhun" label="SKHUN"
-                            placeholder="Pilih file PDF.." fgroup-class="col-md-12" />
+                        <x-adminlte-input-file name="skhun" label="SKHUN" placeholder="Pilih file PDF.."
+                            fgroup-class="col-md-12" />
                         <div class="col-md-12">
                             <label class="font-italic text-success">File :
                                 {{$ijazah->skhun == null? '': $ijazah->skhun}}</label>
+                        </div>
+                        {{-- SKL --}}
+                        <x-adminlte-input-file name="skl" label="Surat Keterangan" placeholder="Pilih file PDF.."
+                            fgroup-class="col-md-12" />
+                        <div class="col-md-12">
+                            <label class="font-italic text-success">File :
+                                {{$ijazah->skl == null? '': $ijazah->skl}}</label>
                         </div>
                     </div>
                 </x-adminlte-card>
