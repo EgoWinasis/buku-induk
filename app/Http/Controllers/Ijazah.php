@@ -114,8 +114,10 @@ class Ijazah extends Controller
      */
     public function update(Request $request, $id)
     {
-      
-        $file = ModelIjazah::find($id);
+        
+  
+        $ijazah = ModelIjazah::find($id);
+
         $validatedData = $request->validate([
             'id_siswa' => ['required', 'max:20'],
             'ijazah' => ['nullable','mimes:pdf','max:2048'],
@@ -124,25 +126,26 @@ class Ijazah extends Controller
         ]);
 
         if ($request->file('ijazah')) {
-            Storage::delete('public/pdf/ijazah/' . $file->ijazah);
+            Storage::delete('public/pdf/ijazah/' . $ijazah->ijazah);
             $file = $request->file('ijazah');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('ijazah')->storeAs('public/pdf/ijazah', $fileName);
             $validatedData['ijazah'] = $fileName;
         }
-        if ($request->file('skl')) {
-            Storage::delete('public/pdf/skl/' . $file->skl);
-            $file = $request->file('skl');
-            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $request->file('skl')->storeAs('public/pdf/skl', $fileName);
-            $validatedData['skl'] = $fileName;
-        }
+       
         if ($request->file('skhun')) {
-            Storage::delete('public/pdf/skhun/' . $file->skhun);
+            Storage::delete('public/pdf/skhun/' . $ijazah->skhun);
             $file = $request->file('skhun');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('skhun')->storeAs('public/pdf/skhun', $fileName);
             $validatedData['skhun'] = $fileName;
+        }
+        if ($request->file('skl')) {
+            Storage::delete('public/pdf/skl/' . $ijazah->skl);
+            $file = $request->file('skl');
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $request->file('skl')->storeAs('public/pdf/skl', $fileName);
+            $validatedData['skl'] = $fileName;
         }
 
         ModelIjazah::where('id', $id)->update($validatedData);

@@ -36,21 +36,21 @@
                     <div class="row">
 
                         {{-- ijazah --}}
-                        <x-adminlte-input-file name="ijazah" label="Ijazah" placeholder="Pilih file PDF.."
+                        <x-adminlte-input-file name="ijazah" label="Ijazah (Maks. 2MB)" placeholder="Pilih file PDF.."
                             fgroup-class="col-md-12" />
                         <div class="col-md-12">
                             <label class="font-italic text-success">File :
                                 {{$ijazah->ijazah == null? '': $ijazah->ijazah}}</label>
                         </div>
                         {{-- SKHUN --}}
-                        <x-adminlte-input-file name="skhun" label="SKHUN" placeholder="Pilih file PDF.."
+                        <x-adminlte-input-file name="skhun" label="SKHUN (Maks. 2MB)" placeholder="Pilih file PDF.."
                             fgroup-class="col-md-12" />
                         <div class="col-md-12">
                             <label class="font-italic text-success">File :
                                 {{$ijazah->skhun == null? '': $ijazah->skhun}}</label>
                         </div>
                         {{-- SKL --}}
-                        <x-adminlte-input-file name="skl" label="Surat Keterangan" placeholder="Pilih file PDF.."
+                        <x-adminlte-input-file name="skl" label="Surat Keterangan (Maks. 2MB)" placeholder="Pilih file PDF.."
                             fgroup-class="col-md-12" />
                         <div class="col-md-12">
                             <label class="font-italic text-success">File :
