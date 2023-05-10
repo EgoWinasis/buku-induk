@@ -27,7 +27,7 @@
                <img src='{{asset("storage/images/logo.jpg")}}' width='400px'>
                </td> 
             </tr>
-            <tr>
+            <tr >
                 <td colspan='2' class=' text-center'>
                     <h1> BUKU INDUK REGISTER </h1>
                 </td>
@@ -55,7 +55,7 @@
         </tbody>
     </table>
 
-    <div class="siku">
+    <div class="siku" style="margin-top: 3cm">
         <table width='100%' class='table-border-out'>
             <tbody>
                 <tr>

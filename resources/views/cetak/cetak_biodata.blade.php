@@ -93,7 +93,7 @@
                 <td>:</td>
                 <td>{{$siswa->tgl_lahir}}</td>
                 <td></td>
-                <td style='font-size:11px' class='text-center'>tanda tangan siswa</td>
+                <td rowspan="3" style='font-size:11px' class='text-center'>Cap Tiga jari tengah Tangan Kiri diatas pas photo bagian bawah waktu diterima di sekolah</td>
             </tr>
             <tr>
                 <td></td>
@@ -102,7 +102,7 @@
                 <td>:</td>
                 <td>{{$siswa->tempat_lahir}}</td>
                 <td></td>
-                <td></td>
+               
             </tr>
             <tr>
                 <td></td>
@@ -111,7 +111,7 @@
                 <td>:</td>
                 <td>{{$siswa->agama}}</td>
                 <td></td>
-                <td style='font-size:11px' class='text-center'>(.........................)</td>
+                
             </tr>
             <tr>
                 <td></td>
@@ -129,9 +129,7 @@
                 <td>:</td>
                 <td>{{$saudara}}</td>
                 <td></td>
-                <td rowspan='4' class=' text-right' width='15%' >
-                <img src='{{asset($imageUrl)}}' width='100px'>
-                </td>
+                <td style='font-size:11px' class='text-center'>tanda tangan siswa</td>
             </tr>
             <tr>
                 <td></td>
@@ -149,7 +147,8 @@
                 <td>:</td>
                 <td>{{$siswa->gol_darah}}</td>
                 <td></td>
-                <td></td>
+                <td width='15%' style='font-size:11px' class='text-center'>(............................)</td>
+
             </tr>
             <tr>
                 <td></td>
@@ -176,7 +175,6 @@
                 <td>:</td>
                 <td>{{$siswa->tempat_tinggal}}</td>
                 <td></td>
-                <td style='font-size:11px' class='text-center'>tanda tangan siswa</td>
             </tr>
             <tr>
                 <td></td>
@@ -204,7 +202,6 @@
                 <td width='3%'></td>
                 <td width='39%'></td>
                 <td width='3%'></td>
-                <td width='15%' style='font-size:11px' class='text-center'>(.........................)</td>
             </tr>
             <tr>
                 <td></td>
@@ -213,7 +210,9 @@
                 <td>:</td>
                 <td>{{$ortu->nama_ayah}}</td>
                 <td></td>
-                <td ></td>
+                <td rowspan='4' class=' text-right' width='15%' >
+                    <img src='{{asset($imageUrl)}}' width='100px'>
+                </td>
                 
             </tr>
             <tr>
@@ -260,7 +259,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td rowspan="3" style='font-size:11px' class='text-center'>Cap Tiga jari tengah Tangan Kiri diatas pas photo bagian bawah waktu diterima di sekolah</td>
             </tr>
             <tr>
                 <td></td>
@@ -297,7 +296,7 @@
                 <td>:</td>
                 <td>{{$ortu->nama_wali}}</td>
                 <td></td>
-                <td></td>
+                <td style='font-size:11px' class='text-center'>tanda tangan siswa</td>
             </tr>
             <tr>
                 <td></td>
@@ -315,7 +314,7 @@
                 <td>:</td>
                 <td>{{$pendidikanWali}}</td>
                 <td></td>
-                <td></td>
+                <td width='15%' style='font-size:11px' class='text-center'>(............................)</td>
             </tr>
             <tr>
                 <td></td>
