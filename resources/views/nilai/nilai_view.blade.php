@@ -39,7 +39,7 @@
                             <th>No</th>
                             <th>NIS</th>
                             <th>Nama</th>
-                            <th>Nilai</th>
+                            <th>Nilai - Kelas</th>
                             <th>Kompetensi</th>
                         </tr>
                     </thead>

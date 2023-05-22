@@ -95,7 +95,7 @@
                     <tr>
                         <td class='table-border' style='text-align:center;'>1.</td>
                         <td class='table-border'>Pendidikan Agama dan Budi Pekerti</td>
-                        <td class='table-border text-center'>
+                        <td class='table-border text-center' style="word-wrap: break-word">
                             {{$pengetahuan->b1c1}}
                         </td>
                         <td class='table-border'>

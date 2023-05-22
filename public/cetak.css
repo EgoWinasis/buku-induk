@@ -1,6 +1,10 @@
+body{
+  max-width: 20.7cm;
+}
 .table-border {
     border: 1px solid black;
     border-collapse: collapse;
+    word-wrap: break-word;
   }
 
 .table-border2{

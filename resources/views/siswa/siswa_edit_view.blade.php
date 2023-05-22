@@ -54,11 +54,11 @@
                         </x-adminlte-input>
                         {{-- nama lengkap --}}
                         <x-adminlte-input name="nama_lengkap"
-                            value="{{old('nama_lengkap') ? old('nama_lengkap') : $student->nama_lengkap}}"
+                            value="{!! old('nama_lengkap') ? old('nama_lengkap') : $student->nama_lengkap !!}"
                             label="Nama Lengkap" placeholder="Nama Lengkap" fgroup-class="col-md-6" />
                         {{-- nama panggilan --}}
                         <x-adminlte-input name="nama_panggilan"
-                            value="{{old('nama_panggilan') ? old('nama_panggilan') : $student->nama_panggilan}}"
+                            value="{!! old('nama_panggilan') ? old('nama_panggilan') : $student->nama_panggilan !!}"
                             label="Nama Panggilan" placeholder="Nama Panggilan" fgroup-class="col-md-6" />
                         {{-- jenis kelamin --}}
                         @php
@@ -165,11 +165,11 @@
                         {{-- input form orang tua --}}
                         {{-- nama ayah --}}
                         <x-adminlte-input name="nama_ayah"
-                            value="{{old('nama_ayah')? old('nama_ayah') : $orangTua->nama_ayah}}" label="Nama Ayah"
+                            value="{!! old('nama_ayah')? old('nama_ayah') : $orangTua->nama_ayah !!}" label="Nama Ayah"
                             placeholder="Nama Ayah" fgroup-class="col-md-6" />
                         {{-- nama ibu --}}
                         <x-adminlte-input name="nama_ibu"
-                            value="{{old('nama_ibu') ? old('nama_ibu') : $orangTua->nama_ibu}}" label="Nama Ibu"
+                            value="{!! old('nama_ibu') ? old('nama_ibu') : $orangTua->nama_ibu !!}" label="Nama Ibu"
                             placeholder="Nama Ibu" fgroup-class="col-md-6" />
                         {{-- Pendidikan Ayah --}}
                         @php

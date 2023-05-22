@@ -764,7 +764,7 @@
                 <x-adminlte-card title="Tanda Tangan" class="col-md-12" theme-mode="full" collapsible="collapsed">
                     <div class="row">
                         {{-- kepala sekolah--}}
-                        <x-adminlte-input name="kepsek" value="{{old('kepsek') ? old('kepsek') : $ttd->kepsek}}"
+                        <x-adminlte-input name="kepsek" value="{!! old('kepsek') ? old('kepsek') : $ttd->kepsek !!}"
                             label="Kepala Sekolah" placeholder="Kepala Sekolah" fgroup-class="col-md-6" />
                         {{-- NIP kepala sekolah--}}
                         <x-adminlte-input name="nip_kepsek"
@@ -776,7 +776,7 @@
                         <label class="col-md-12 text-success">File : {{$ttd->barcode_kepsek}}</label>
                         {{-- Guru--}}
                         <x-adminlte-input name="wali_kelas"
-                            value="{{old('wali_kelas') ? old('wali_kelas') : $ttd->wali_kelas}}" label="Wali Kelas"
+                            value="{!! old('wali_kelas') ? old('wali_kelas') : $ttd->wali_kelas !!}" label="Wali Kelas"
                             placeholder="Wali Kelas" fgroup-class="col-md-6" />
                         {{-- NIP Wali KElas--}}
                         <x-adminlte-input name="nip_wali_kelas"

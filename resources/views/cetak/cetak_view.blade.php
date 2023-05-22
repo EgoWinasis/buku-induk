@@ -40,6 +40,8 @@
               <th>Nilai</th>
               <th>Kompetensi</th>
               <th>Ijazah</th>
+              <th>SKHUN</th>
+              <th>Suket</th>
             </tr>
           </thead>
           <tbody>
@@ -122,6 +124,12 @@
               <td class="text-center">
                 <a class="btn btn-secondary btn-ijazah"><i class="fa fa-book"></i></a>
               </td>
+              <td class="text-center">
+                <a class="btn btn-secondary btn-ijazah"><i class="fa fa-book"></i></a>
+              </td>
+              <td class="text-center">
+                <a class="btn btn-secondary btn-ijazah"><i class="fa fa-book"></i></a>
+              </td>
               @else
 
               @php
@@ -144,12 +152,41 @@
               $skhunValue = '0';
               }
               @endphp
-
+              {{--  --}}
+              @if ($ijazahValue != '0')
               <td class="text-center">
-                <a data-ijazah="{{$ijazahValue}}" data-skl="{{$sklValue}}" data-skhun="{{$skhunValue}}"
-                  data-href="{{route('cetak.ijazah', $ijazah->id)}}" data-href_skl="{{route('cetak.skl', $ijazah->id)}}"  data-href_skhun="{{route('cetak.skhun', $ijazah->id)}}"
-                  class="btn btn-cetak-ijazah btn-secondary"><i class="fa fa-book"></i></a>
+                <a class="btn  btn-secondary" target="_blank" href="{{route('cetak.ijazah', $ijazah->id)}}"><i class="fa fa-book"></i></a>
               </td>
+              @else
+              <td class="text-center">
+                <a class="btn btn-secondary btn-ijazah"><i class="fa fa-book"></i></a>
+              </td>
+              @endif
+              {{--  --}}
+              @if ($skhunValue != '0')
+              <td class="text-center">
+                <a class="btn  btn-secondary" target="_blank" href="{{route('cetak.skhun', $ijazah->id)}}"><i class="fa fa-book"></i></a>
+              </td>
+              @else
+              <td class="text-center">
+                <a class="btn btn-secondary btn-ijazah"><i class="fa fa-book"></i></a>
+              </td>
+              @endif
+              {{--  --}}
+              @if ($sklValue != '0')
+              <td class="text-center">
+                <a class="btn  btn-secondary" target="_blank" href="{{route('cetak.skl', $ijazah->id)}}"><i class="fa fa-book"></i></a>
+              </td>
+              @else
+              <td class="text-center">
+                <a class="btn btn-secondary btn-ijazah"><i class="fa fa-book"></i></a>
+              </td>
+              @endif
+              
+
+
+
+              {{--  --}}
               @endif
             </tr>
 
@@ -263,40 +300,10 @@
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: "Data Ijazah Siswa Belum Di-Input"
+        text: "File Siswa Belum Di-Input"
       })
     
 });
 
-  $(document).on('click', '.btn-cetak-ijazah', function (e) {
-   e.preventDefault();
-    
-   var ijazah = $(this).data('ijazah');
-   var skl = $(this).data('skl');
-   var skhun = $(this).data('skhun');
-
-
-   if (ijazah != '0') {
-     
-        window.open(
-          $(this).data('href'),
-          '_blank' // <- This is what makes it open in a new window.
-         );
-   }
-   if (skl != '0') {
-        window.open(
-          $(this).data('href_skl'),
-          '_blank' // <- This is what makes it open in a new window.
-         );
-   }
-   if (skhun != '0') {
-        window.open(
-          $(this).data('href_skhun'),
-          '_blank' // <- This is what makes it open in a new window.
-         );
-   }
-   
-
-});
 </script>
 @stop
