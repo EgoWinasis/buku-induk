@@ -14,7 +14,7 @@
     <h1 class='text-left my-20' style="text-align: center;font-size:25px">DATA NILAI SISWA / SISWI SD KURIKULUM MERDEKA</h1>
 
 
-    <table width='100%' style = 'border-bottom:1px solid'>
+    <table width='100%' style = 'border-bottom:1px solid' >
         <tbody>
             <tr>
                 <th width='18%' style='text-align: left;'>NAMA SISWA</th>
@@ -36,7 +36,7 @@
     </table>
 
     <h5 class='text-left my-20'>A. PROFIL PELAJAR PANCASILA</h5>
-            <table width='100%' class='table-border'>
+            <table width='100%' class='table-border' style="table-layout: fixed;">
                 <tbody >
                     <tr>
                         <th width='40%' class='table-border'>DIMENSI</th>
@@ -44,40 +44,40 @@
                         <th width='30%' class='table-border'>SUB ELEMEN</th>
                     </tr>
                     <tr>
-                        <td class='table-border'>1. Beriman, bertakwa kepada Tuhan yang Maha Esa dan berakhlak mulia</td>
-                        <td class='table-border'>{{$pelajarPancasila->b1c1}}</td>
-                        <td class='table-border'>{{$pelajarPancasila->b1c2}}</td>
+                        <td class='table-border' style="word-wrap: break-word">1. Beriman, bertakwa kepada Tuhan yang Maha Esa dan berakhlak mulia</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b1c1}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b1c2}}</td>
                     </tr>
                     <tr>
                         <td class='table-border'>2. Berkebhinekaan Global</td>
-                        <td class='table-border'>{{$pelajarPancasila->b2c1}}</td>
-                        <td class='table-border'>{{$pelajarPancasila->b2c2}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b2c1}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b2c2}}</td>
                     </tr>
                     <tr>
                         <td class='table-border'>3. Bergotong Royong</td>
-                        <td class='table-border'>{{$pelajarPancasila->b3c1}}</td>
-                        <td class='table-border'>{{$pelajarPancasila->b3c2}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b3c1}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b3c2}}</td>
                     </tr>
                     <tr>
                         <td class='table-border'>4. Mandiri</td>
-                        <td class='table-border'>{{$pelajarPancasila->b4c1}}</td>
-                        <td class='table-border'>{{$pelajarPancasila->b4c2}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b4c1}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b4c2}}</td>
                     </tr>
                     <tr>
                         <td class='table-border'>5. Berfikiri Kritis</td>
-                        <td class='table-border'>{{$pelajarPancasila->b5c1}}</td>
-                        <td class='table-border'>{{$pelajarPancasila->b5c2}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b5c1}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b5c2}}</td>
                     </tr>
                     <tr>
                         <td class='table-border'>6. Kreatif & Inovatif</td>
-                        <td class='table-border'>{{$pelajarPancasila->b6c1}}</td>
-                        <td class='table-border'>{{$pelajarPancasila->b6c2}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b6c1}}</td>
+                        <td class='table-border' style="word-wrap: break-word">{{$pelajarPancasila->b6c2}}</td>
                     </tr>
                 </tbody>
             </table>
 
             <h5 class='text-left my-20'>B. PENGETAHUAN DAN KETERAMPILAN</h5>
-            <table width='100%' class='table-border'>
+            <table width='100%' class='table-border' style = "table-layout: fixed;">
                 <tbody >
                     <tr>
                         <th rowspan='2' class='text-center table-border' width='5%'>No</th>
@@ -86,10 +86,10 @@
                         <th colspan='2' class='text-center table-border' width='35%'>Semester 2</th>
                     </tr>
                     <tr class='text-center'>
-                        <th width='10%' class='table-border'>Nilai Akhir</th>
-                        <th class='table-border'>Capaian Kompetensi (Deskripsi)</th>
-                        <th width='10%' class='table-border'>Nilai Akhir</th>
-                        <th class='table-border'>Capaian Kompetensi (Deskripsi)</th>
+                        <th width='10%' class='table-border' style="word-wrap: break-word">Nilai Akhir</th>
+                        <th class='table-border' width="25%">Capaian Kompetensi (Deskripsi)</th>
+                        <th width='10%' class='table-border' style="word-wrap: break-word">Nilai Akhir</th>
+                        <th class='table-border' width="25%">Capaian Kompetensi (Deskripsi)</th>
 
                     </tr>
                     <tr>
@@ -98,13 +98,13 @@
                         <td class='table-border text-center' style="word-wrap: break-word">
                             {{$pengetahuan->b1c1}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$pengetahuan->b1c2}}
                         </td>
-                        <td class='table-border text-center'>
+                        <td class='table-border text-center' style="word-wrap: break-word">
                             {{$pengetahuan->b1c3}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$pengetahuan->b1c4}}
                         </td>
                     </tr>
@@ -114,13 +114,13 @@
                         <td class='table-border text-center'>
                             {{$pengetahuan->b2c1}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$pengetahuan->b2c2}}
                         </td>
                         <td class='table-border text-center'>
                             {{$pengetahuan->b2c3}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$pengetahuan->b2c4}}
                         </td>
                     </tr>
@@ -368,7 +368,7 @@
             <div class="pagebreak"> </div>
   
 
-            <table width='100%' class='table-border my-20'>
+            <table width='100%' class='table-border my-20' style="table-layout: fixed;">
                 <tbody>
                     <tr>
                         <th class='text-center table-border' width='5%'>No</th>
@@ -382,7 +382,7 @@
                         <td class='table-border text-center'>
                             {{$ekstra->b1c1}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$ekstra->b1c2}}
                         </td>
                     </tr>
@@ -392,7 +392,7 @@
                         <td class='table-border text-center'>
                             {{$ekstra->b2c1}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$ekstra->b2c2}}
                         </td>
                     </tr>
@@ -400,7 +400,7 @@
              </table>
 
              <br>
-             <table width='100%' class='table-border'>
+             <table width='100%' class='table-border' style="table-layout: fixed;">
                 <tbody>
                     <tr>
                         <th class='text-center table-border' width='5%'>No</th>
@@ -412,7 +412,7 @@
                         <td class='table-border'>
                             {{$prestasi->b1c1}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$prestasi->b1c2}}
                         </td>
                     </tr>
@@ -421,7 +421,7 @@
                         <td class='table-border'>
                             {{$prestasi->b2c1}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$prestasi->b2c2}}
                         </td>
                     </tr>
@@ -430,7 +430,7 @@
                         <td class='table-border'>
                             {{$prestasi->b3c1}}
                         </td>
-                        <td class='table-border'>
+                        <td class='table-border' style="word-wrap: break-word">
                             {{$prestasi->b3c2}}
                         </td>
                     </tr>
@@ -452,7 +452,7 @@
                         </td>
                         <td class='border-bottom'>:</td>
                         <td class='border-right border-bottom padding-right'>{{$ketidakhadiran->sakit}} hari</td>
-                        <td class='padding-left'>Berdasarkan pencapaian kompetensi pada semester ke-1 dan ke-2, siswa ditetapkan :</td>
+                        <td class='padding-left'  width="100px">Berdasarkan pencapaian kompetensi pada semester ke-1 dan ke-2, siswa ditetapkan :</td>
                     </tr>
                     <tr>
                         <td class='text-center table-border'>2.</td>

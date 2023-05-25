@@ -1,6 +1,4 @@
-body{
-  max-width: 20.7cm;
-}
+
 .table-border {
     border: 1px solid black;
     border-collapse: collapse;
@@ -103,7 +101,7 @@ tr.highlight td{
 /*  kompetensi */
 
 .kompetensi tr{
-  line-height: 1.5cm;
+  line-height: 0.5cm;
 }
 
 .siswa-induk{

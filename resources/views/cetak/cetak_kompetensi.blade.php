@@ -10,10 +10,10 @@
 </head>
 <body>
     <h1 style="text-align: center;font-size:2rem">CAPAIAN KOMPETENSI</h1>
-    <table width='100%' class='table-border kompetensi' style="margin-top: 20px">
+    <table width='100%' class='table-border kompetensi' style="margin-top: 20px; table-layout: fixed;">
         <thead>
             <tr>
-                <th class='w-30 text-center table-border'>Mata Pelajaran</th>
+                <th class='w-30 table-border'>Mata Pelajaran</th>
                 <th class='w-10 text-center table-border'>Kelas</th>
                 <th class='w-15 text-center table-border'>Smt</th>
                 <th class='w-45 text-center table-border'>Capaian Kompetensi</th>
@@ -22,10 +22,10 @@
         <tbody>
             {{--  --}}
             <tr>
-                <td rowspan='2'  class='table-border'>{{$kompetensi->mapel_1}}</td>
-                <td rowspan='2' class='text-center table-border'>1</td>
-                <td class='text-center table-border'>1</td>
-                <td  class='table-border'>{{$kompetensi->ck_1_1}}</td>
+                <td rowspan='2'  class='table-border' style="word-wrap: break-word">{{$kompetensi->mapel_1}}</td>
+                <td rowspan='2' class='text-center table-border' style="word-wrap: break-word">1</td>
+                <td class='text-center table-border' style="word-wrap: break-word">1</td>
+                <td  class='table-border' style="word-wrap: break-word">{{$kompetensi->ck_1_1}}</td>
             </tr>
             <tr>
                
