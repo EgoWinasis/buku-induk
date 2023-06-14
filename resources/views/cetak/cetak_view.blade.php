@@ -80,17 +80,19 @@
 
                 @endphp
                 @if (empty($nilai))
-
-                <a class="btn btn-info btn-kelas-empty">{{$item->kelas}}</a>
-
+                   @if ($item->tinggal_kelas == 'false')
+                      <a class="btn btn-info btn-kelas-empty">{{$item->kelas}}</a>
+                   @else
+                      <a class="btn btn-warning btn-kelas-empty">{{$item->kelas}}</a>
+                    @endif
                 @else
-                @if ($item->tinggal_kelas == 'false')
-                <a href="{{route('cetak.nilai', $nilai->id)}}" target="_blank"
-                  class="btn btn-info btn-kelas">{{$item->kelas}}</a>
-                @else
-                <a href="{{route('cetak.nilai', $nilai->id)}}" target="_blank"
-                  class="btn btn-warning btn-kelas">{{$item->kelas}}</a>
-                @endif
+                  @if ($item->tinggal_kelas == 'false')
+                  <a href="{{route('cetak.nilai', $nilai->id)}}" target="_blank"
+                    class="btn btn-info btn-kelas">{{$item->kelas}}</a>
+                  @else
+                  <a href="{{route('cetak.nilai', $nilai->id)}}" target="_blank"
+                    class="btn btn-warning btn-kelas">{{$item->kelas}}</a>
+                  @endif
                 @endif
                 @endforeach
               </td>

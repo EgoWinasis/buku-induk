@@ -461,7 +461,12 @@ class Nilai extends Controller
             ];
 
             ModelKenaikan::create($status);
+            $folderPath = 'public/images/barcode';
 
+            if (!Storage::exists($folderPath)) {
+                // Folder doesn't exist, create it
+                Storage::makeDirectory($folderPath, 0755, true);
+            }
             if ($request->file('barcode_kepsek')) {
                 $file = $request->file('barcode_kepsek');
                 $fileName = uniqid() . '.' . $file->getClientOriginalExtension();

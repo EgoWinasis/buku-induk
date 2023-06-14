@@ -13,23 +13,23 @@
 <body>
     <h4 class='text-center'>II. LEMBAR BUKU INDUK SISWA</h4>
 
-    <table width='100%' class="siswa-induk">
+    <table width='100%' class="siswa-induk" style="table-layout: fixed;">
         <tbody>
             <tr>
-                <td width='35%'>Nomor Induk Siswa</td>
-                <td width='3%'>:</td>
-                <td width='25%'>{{$siswa->nis}}</td>
-                <td width='10%'>NIK</td>
-                <td width='3%'>:</td>
-                <td width='24%'>{{$siswa->nik}}</td>
+                <td width='35%' style="word-wrap: break-word">Nomor Induk Siswa</td>
+                <td width='3%' style="word-wrap: break-word">:</td>
+                <td width='25%' style="word-wrap: break-word">{{$siswa->nis}}</td>
+                <td width='10%'style="word-wrap: break-word">NIK</td>
+                <td width='3%' style="word-wrap: break-word">:</td>
+                <td width='24%' style="word-wrap: break-word">{{$siswa->nik}}</td>
             </tr>
             <tr>
-                <td width='35%'>Nomor Induk Siswa Nasional</td>
-                <td width='3%'>:</td>
-                <td width='25%'>{{$siswa->nisn}}</td>
-                <td width='10%'>No. KK</td>
-                <td width='3%'>:</td>
-                <td width='24%'>{{$siswa->no_kk}}</td>
+                <td width='35%' style="word-wrap: break-word">Nomor Induk Siswa Nasional</td>
+                <td width='3%'style="word-wrap: break-word">:</td>
+                <td width='25%' style="word-wrap: break-word">{{$siswa->nisn}}</td>
+                <td width='10%' style="word-wrap: break-word">No. KK</td>
+                <td width='3%' style="word-wrap: break-word">:</td>
+                <td width='24%' style="word-wrap: break-word">{{$siswa->no_kk}}</td>
             </tr>
         </tbody>
     </table>
@@ -37,15 +37,15 @@
     <h5 class='text-left my-20'>A. KETERANGAN SISWA</h5>
     
 
-    <table width='100%' >
+    <table width='100%' style="table-layout: fixed;">
         <tbody>
             <tr>
-                <td  width='5%'></td>
-                <td  width='5%'>1</td>
-                <td  width='30%'>Nama Siswa</td>
-                <td  width='3%'></td>
-                <td  width='39%'></td>
-                <td  width='3%'></td>
+                <td  width='5%' style="word-wrap: break-word"></td>
+                <td  width='5%' style="word-wrap: break-word">1</td>
+                <td  width='30%' style="word-wrap: break-word">Nama Siswa</td>
+                <td  width='3%'style="word-wrap: break-word"></td>
+                <td  width='39%' style="word-wrap: break-word"></td>
+                <td  width='3%' style="word-wrap: break-word"></td>
                 <td rowspan='4' class=' text-right' width='15%' >
                 <img src='{{asset($imageUrl)}}' width='100px'>
                 </td>
@@ -55,7 +55,7 @@
                 <td></td>
                 <td>a. Lengkap</td>
                 <td>:</td>
-                <td>{{$siswa->nama_lengkap}}</td>
+                <td style="word-wrap: break-word">{{$siswa->nama_lengkap}}</td>
                 <td></td>
                 
             </tr>
@@ -64,7 +64,7 @@
                 <td></td>
                 <td>a. Panggilan</td>
                 <td>:</td>
-                <td>{{$siswa->nama_panggilan}}</td>
+                <td style="word-wrap: break-word">{{$siswa->nama_panggilan}}</td>
                 <td></td>
                 
             </tr>
@@ -91,7 +91,7 @@
                 <td></td>
                 <td>a. Tanggal</td>
                 <td>:</td>
-                <td>{{$siswa->tgl_lahir}}</td>
+                <td style="word-wrap: break-word">{{$siswa->tgl_lahir}}</td>
                 <td></td>
                 <td rowspan="3" style='font-size:11px' class='text-center'>Cap Tiga jari tengah Tangan Kiri diatas pas photo bagian bawah waktu diterima di sekolah</td>
             </tr>
@@ -100,7 +100,7 @@
                 <td></td>
                 <td>b. Tempat</td>
                 <td>:</td>
-                <td>{{$siswa->tempat_lahir}}</td>
+                <td style="word-wrap: break-word">{{$siswa->tempat_lahir}}</td>
                 <td></td>
                
             </tr>
@@ -109,7 +109,7 @@
                 <td>4</td>
                 <td>Agama</td>
                 <td>:</td>
-                <td>{{$siswa->agama}}</td>
+                <td style="word-wrap: break-word">{{$siswa->agama}}</td>
                 <td></td>
                 
             </tr>
@@ -118,7 +118,7 @@
                 <td>5</td>
                 <td>Kewarganegaraan</td>
                 <td>:</td>
-                <td>{{$siswa->kewarganegaraan}}</td>
+                <td style="word-wrap: break-word">{{$siswa->kewarganegaraan}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -136,7 +136,7 @@
                 <td>7</td>
                 <td>Bahasa Sehari-hari dirumah</td>
                 <td>:</td>
-                <td>{{$siswa->bahasa}}</td>
+                <td style="word-wrap: break-word">{{$siswa->bahasa}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -155,7 +155,7 @@
                 <td>9</td>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>{{$siswa->alamat}}</td>
+                <td style="word-wrap: break-word">{{$siswa->alamat}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -164,7 +164,7 @@
                 <td>10</td>
                 <td>Nomor Telepon</td>
                 <td>:</td>
-                <td>{{$siswa->telepon}}</td>
+                <td style="word-wrap: break-word">{{$siswa->telepon}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -173,7 +173,7 @@
                 <td>11</td>
                 <td>Bertempat Tinggal Pada</td>
                 <td>:</td>
-                <td>{{$siswa->tempat_tinggal}}</td>
+                <td style="word-wrap: break-word">{{$siswa->tempat_tinggal}}</td>
                 <td></td>
             </tr>
             <tr>
@@ -193,7 +193,7 @@
     <h5 class='text-left my-20'>B. KETERANGAN ORANG TUA / WALI SISWA</h5>
 
 
-    <table width='100%' >
+    <table width='100%' style="table-layout: fixed;">
         <tbody>
             <tr>
                 <td width='5%'></td>
@@ -208,7 +208,7 @@
                 <td></td>
                 <td>a. Ayah</td>
                 <td>:</td>
-                <td>{{$ortu->nama_ayah}}</td>
+                <td style="word-wrap: break-word">{{$ortu->nama_ayah}}</td>
                 <td></td>
                 <td rowspan='4' class=' text-right' width='15%' >
                     <img src='{{asset($imageUrl)}}' width='100px'>
@@ -220,7 +220,7 @@
                 <td></td>
                 <td>a. Ibu</td>
                 <td>:</td>
-                <td>{{$ortu->nama_ibu}}</td>
+                <td style="word-wrap: break-word">{{$ortu->nama_ibu}}</td>
                 <td></td>
                 
             </tr>
@@ -266,7 +266,7 @@
                 <td></td>
                 <td>a. Ayah</td>
                 <td>:</td>
-                <td>{{$ortu->pekerjaan_ayah}}</td>
+                <td style="word-wrap: break-word">{{$ortu->pekerjaan_ayah}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -275,7 +275,7 @@
                 <td></td>
                 <td>b. Ibu</td>
                 <td>:</td>
-                <td>{{$ortu->pekerjaan_ibu}}</td>
+                <td style="word-wrap: break-word">{{$ortu->pekerjaan_ibu}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -294,7 +294,7 @@
                 <td></td>
                 <td>a. Nama</td>
                 <td>:</td>
-                <td>{{$ortu->nama_wali}}</td>
+                <td style="word-wrap: break-word">{{$ortu->nama_wali}}</td>
                 <td></td>
                 <td style='font-size:11px' class='text-center'>tanda tangan siswa</td>
             </tr>
@@ -303,7 +303,7 @@
                 <td></td>
                 <td>b. Hubungan Keluarga</td>
                 <td>:</td>
-                <td>{{$ortu->hubungan_wali}}</td>
+                <td style="word-wrap: break-word">{{$ortu->hubungan_wali}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -321,7 +321,7 @@
                 <td></td>
                 <td>d. Pekerjaan</td>
                 <td>:</td>
-                <td>{{$ortu->pekerjaan_wali}}</td>
+                <td style="word-wrap: break-word">{{$ortu->pekerjaan_wali}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -333,7 +333,7 @@
     
     <h5 class='text-left my-20'>C. PERKEMBANGAN SISWA</h5>
     
-    <table width='100%' >
+    <table width='100%' style="table-layout: fixed;">
         <tbody>
             <tr>
                 <td  width='5%'></td>
@@ -356,7 +356,7 @@
                 <td></td>
                 <td style='padding-left:10px;'>1. Asal Sekolah</td>
                 <td>:</td>
-                <td>{{$perkembangan->asal_sekolah}}</td>
+                <td style="word-wrap: break-word">{{$perkembangan->asal_sekolah}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -365,7 +365,7 @@
                 <td></td>
                 <td style='padding-left:10px;'>2. Nama TK</td>
                 <td>:</td>
-                <td>{{$perkembangan->nama_tk}}</td>
+                <td style="word-wrap: break-word">{{$perkembangan->nama_tk}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -374,7 +374,7 @@
                 <td></td>
                 <td style='padding-left:10px;'>3. Tanggal STTB</td>
                 <td>:</td>
-                <td>{{$perkembangan->tgl_sttb}}</td>
+                <td style="word-wrap: break-word">{{$perkembangan->tgl_sttb}}</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -383,7 +383,7 @@
                 <td></td>
                 <td style='padding-left:10px;'>4. Nomor STTB</td>
                 <td>:</td>
-                <td>{{$perkembangan->no_sttb}}</td>
+                <td style="word-wrap: break-word">{{$perkembangan->no_sttb}}</td>
                 <td></td>
                 <td></td>
                 
@@ -404,7 +404,7 @@
                 <td></td>
                 <td style='padding-left:10px;'>1. Asal Sekolah</td>
                 <td>:</td>
-                <td>{{$perkembangan->asal_sekolah_pindah}}</td>
+                <td style="word-wrap: break-word">{{$perkembangan->asal_sekolah_pindah}}</td>
                 <td></td>
                 <td></td>
                 
@@ -414,7 +414,7 @@
                 <td></td>
                 <td style='padding-left:10px;'>2. Dari Tingkat</td>
                 <td>:</td>
-                <td>{{$tingkatSekolahPindah}}</td>
+                <td style="word-wrap: break-word">{{$tingkatSekolahPindah}}</td>
                 <td></td>
                 <td></td>
                 
@@ -424,7 +424,7 @@
                 <td></td>
                 <td style='padding-left:10px;'>3. Diterima Tanggal</td>
                 <td>:</td>
-                <td>{{$perkembangan->tgl_diterima}}</td>
+                <td style="word-wrap: break-word">{{$perkembangan->tgl_diterima}}</td>
                 <td></td>
                 <td></td>
                 
@@ -433,7 +433,7 @@
         </tbody>
     </table>
 
-    <table width='100%' class='table-border2 my-20'>
+    <table width='100%' class='table-border2 my-20' style="table-layout: fixed;">
         <tbody>
             <tr>
                 <td width='5%'></td>
@@ -442,56 +442,56 @@
                 <td  width='5%'></td>
                 <td class='border text-center' width='5%'>a</td>
                 <td class='border ' width='20%'>Tahun</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_th_1}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_th_2}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_th_3}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_th_4}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_th_5}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_th_6}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_th_1}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_th_2}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_th_3}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_th_4}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_th_5}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_th_6}}</td>
             </tr>
             <tr>
                 <td  width='5%'></td>
                 <td class='border text-center' width='5%'>b</td>
                 <td class='border ' width='20%'>Berat Badan</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_bb_1}} kg</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_bb_2}} kg</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_bb_3}} kg</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_bb_4}} kg</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_bb_5}} kg</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_bb_6}} kg</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_bb_1}} kg</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_bb_2}} kg</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_bb_3}} kg</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_bb_4}} kg</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_bb_5}} kg</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_bb_6}} kg</td>
             </tr>
             <tr>
                 <td  width='5%'></td>
                 <td class='border text-center' width='5%'>c</td>
                 <td class='border ' width='20%'>Tinggi Badan</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_tb_1}} cm</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_tb_2}} cm</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_tb_3}} cm</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_tb_4}} cm</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_tb_5}} cm</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_tb_6}} cm</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_tb_1}} cm</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_tb_2}} cm</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_tb_3}} cm</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_tb_4}} cm</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_tb_5}} cm</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_tb_6}} cm</td>
             </tr>
             <tr>
                 <td  width='5%'></td>
                 <td class='border text-center' width='5%'>d</td>
                 <td class='border ' width='20%'>Penyakit</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_pt_1}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_pt_2}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_pt_3}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_pt_4}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_pt_5}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_pt_6}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_pt_1}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_pt_2}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_pt_3}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_pt_4}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_pt_5}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_pt_6}}</td>
             </tr>
             <tr>
                 <td  width='5%'></td>
                 <td class='border text-center' width='5%'>e</td>
                 <td class='border ' width='20%'>Keahlian Jasmani</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_kj_1}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_kj_2}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_kj_3}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_kj_4}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_kj_5}}</td>
-                <td class='border text-center' width='10%'>{{$jasmani->jas_kj_6}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_kj_1}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_kj_2}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_kj_3}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_kj_4}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_kj_5}}</td>
+                <td class='border text-center' width='10%' style="word-wrap: break-word">{{$jasmani->jas_kj_6}}</td>
             </tr>
            
             
@@ -500,14 +500,14 @@
 
     <h5 class='text-left my-20'>D. BEASISWA</h5>
 
-    <table width='100%' >
+    <table width='100%'  style="table-layout: fixed;">
         <tbody>
             <tr>
                 <td width='5%'></td>
                 <td width='5%'>19</td>
                 <td width='30%'>Jenis Beasiswa</td>
                 <td width='3%'>:</td>
-                <td width='39%'>{{$beasiswa->beasiswa}}</td>
+                <td width='39%' style="word-wrap: break-word">{{$beasiswa->beasiswa}}</td>
                 <td width='3%'></td>
                 <td width='15%'></td>
             </tr>
@@ -544,7 +544,7 @@
                     <td></td>
                     <td>b. Nomor Ijazah / STTB</td>
                     <td>:</td>
-                    <td>{{$meninggalkan->no_ijazah}}</td>
+                    <td style="word-wrap: break-word">{{$meninggalkan->no_ijazah}}</td>
                     <td></td>
                     <td></td>
                     
@@ -554,7 +554,7 @@
                     <td></td>
                     <td>c. Melanjutkan Ke Sekolah</td>
                     <td>:</td>
-                    <td>{{$meninggalkan->lanjut_sekolah_tamat}}</td>
+                    <td style="word-wrap: break-word">{{$meninggalkan->lanjut_sekolah_tamat}}</td>
                     <td></td>
                     <td></td>
                     
@@ -583,7 +583,7 @@
                     <td></td>
                     <td>b. Ke Sekolah</td>
                     <td>:</td>
-                    <td>{{$meninggalkan->lanjut_sekolah_pindah}}</td>
+                    <td style="word-wrap: break-word">{{$meninggalkan->lanjut_sekolah_pindah}}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -620,7 +620,7 @@
                     <td></td>
                     <td>b. Alasan</td>
                     <td>:</td>
-                    <td>{{$meninggalkan->alasan_keluar_sekolah}}</td>
+                    <td style="word-wrap: break-word">{{$meninggalkan->alasan_keluar_sekolah}}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -631,8 +631,12 @@
         </table>
 
         <h5 class='text-left my-20'>F. LAIN-LAIN</h5>
-        <p  style='margin-left:5%;'>{{$lain->lain_lain}}</p>
-
+        <table width="100%" style="table-layout: fixed;">
+            <tr>
+                <td  style="margin-left:5% ; word-wrap: break-word">{{$lain->lain_lain}}</td>
+            </tr>
+        
+        </table>
 
 
     <script type="text/javascript">

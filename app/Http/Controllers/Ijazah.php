@@ -53,6 +53,22 @@ class Ijazah extends Controller
             'skhun' => ['nullable','mimes:pdf','max:2048'],
         ]);
 
+        $folderPathIjazah = 'public/pdf/ijazah';
+        $folderPathSkhun = 'public/pdf/skhun';
+        $folderPathSkl = 'public/pdf/skl';
+        // create folder
+        if (!Storage::exists($folderPathIjazah)) {
+            // Folder doesn't exist, create it
+            Storage::makeDirectory($folderPathIjazah, 0755, true);
+        }
+        if (!Storage::exists($folderPathSkhun)) {
+            // Folder doesn't exist, create it
+            Storage::makeDirectory($folderPathSkhun, 0755, true);
+        }
+        if (!Storage::exists($folderPathSkl)) {
+            // Folder doesn't exist, create it
+            Storage::makeDirectory($folderPathSkl, 0755, true);
+        }
         if ($request->file('ijazah')) {
             $file = $request->file('ijazah');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();

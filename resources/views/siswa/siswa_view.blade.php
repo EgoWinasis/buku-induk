@@ -39,6 +39,7 @@
                         <tr>
                             <th>No</th>
                             <th>NIS</th>
+                            <th>NISN</th>
                             <th>Nama Lengkap</th>
                             <th>Jenis Kelamin</th>
                             <th>Foto</th>
@@ -53,6 +54,7 @@
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $student->nis }}</td>
+                            <td>{{ $student->nisn }}</td>
                             <td class="nama">{{ $student->nama_lengkap }}</td>
                             <td>{{ $student->jen_kel == "Laki-laki" ? "Laki-laki" : "Perempuan" }}</td>
                             <td class="text-center"><img
@@ -65,7 +67,8 @@
 
                                 <a class="btn btn-primary" href="{{ route('siswa.edit',$student->id) }}">Edit</a>
 
-                                {{-- @csrf
+                                {{-- 
+                                    @csrf
                                     @method('DELETE')
                                     <button type="submit"  class="btn btn-danger">Delete</button> --}}
                                 <a class="btn btn-danger btn-delete" data-id="{{$student->id}}">Delete</a>
@@ -171,6 +174,9 @@
                     title: 'Oops...',
                     text: error
                     })
+
+                    
+
                  }      
             });
         
